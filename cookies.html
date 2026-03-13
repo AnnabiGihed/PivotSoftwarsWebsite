@@ -94,23 +94,393 @@
       box-shadow: var(--shadow);
     }
     .policy-meta { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
+  
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: #334155;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-links a:hover { color: var(--primary-dark); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid #334155;
+      border-bottom: 2px solid #334155;
+      transform: rotate(45deg);
+      display: inline-block;
+      margin-left: 8px;
+      margin-bottom: 2px;
+    }
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      min-width: 240px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(11, 18, 32, 0.12);
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: 0.2s ease;
+    }
+    .dropdown-panel a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #1e293b;
+      font-weight: 500;
+    }
+    .dropdown-panel a:hover {
+      background: #f4f7fb;
+      color: var(--primary-dark);
+    }
+    .nav-dropdown:hover .dropdown-panel,
+    .nav-dropdown:focus-within .dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .nav-toggle {
+      display: none;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px 12px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(11, 18, 32, 0.08);
+    }
+    .nav-toggle span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: #1e293b;
+      border-radius: 999px;
+    }
+    .nav-toggle span + span { margin-top: 5px; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      padding: 14px 22px;
+      box-shadow: 0 16px 32px rgba(31,95,191,0.2);
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-secondary {
+      background: #fff;
+      color: var(--text);
+      border-color: var(--line);
+      padding: 12px 18px;
+    }
+
+    .topbar.scrolled {
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+      border-bottom-color: rgba(15,23,42,0.08);
+    }
+
+    footer {
+      padding: 26px 0 42px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .footer-brand img {
+      height: 38px;
+      width: auto;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-contact {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .footer-contact a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-contact span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .footer-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .footer-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 18px;
+    }
+
+    .cookie-banner {
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 20px 50px rgba(11, 18, 32, 0.2);
+      display: none;
+    }
+    .cookie-banner.visible { display: block; }
+    .cookie-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+    .cookie-content strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .cookie-content p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 520px;
+    }
+    .cookie-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .cookie-panel {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+    }
+    .cookie-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .cookie-option .cookie-text {
+      display: grid;
+      gap: 4px;
+    }
+    .cookie-option label {
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .cookie-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .cookie-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .cookie-slider {
+      position: absolute;
+      inset: 0;
+      background: #cbd5f0;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+    .cookie-slider::before {
+      content: "";
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.2s ease;
+    }
+    .cookie-switch input:checked + .cookie-slider {
+      background: var(--primary);
+    }
+    .cookie-switch input:checked + .cookie-slider::before {
+      transform: translateX(20px);
+    }
+    .cookie-switch input:disabled + .cookie-slider {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+
+    @media (max-width: 980px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    @media (max-width: 780px) {
+      .nav { min-height: 76px; }
+      .cookie-content { flex-direction: column; align-items: flex-start; }
+      .nav-toggle { display: inline-flex; margin-left: auto; }
+      .nav-menu {
+        position: fixed;
+        top: 76px;
+        left: 16px;
+        right: 16px;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 18px;
+        box-shadow: 0 18px 40px rgba(11, 18, 32, 0.16);
+        display: none;
+        flex-direction: column;
+        gap: 16px;
+        z-index: 999;
+      }
+      .nav-menu.open { display: flex; }
+      .nav-links {
+        width: 100%;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+      }
+      .nav-actions { width: 100%; flex-direction: column; }
+      .nav-actions .btn { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .dropdown-panel {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: 0;
+        padding: 8px 0 0 12px;
+      }
+      .nav-dropdown > a::after { display: none; }
+    }
   </style>
 </head>
 <body>
-  <header class="topbar">
+    <header class="topbar" id="navbar">
     <div class="container nav">
       <a class="brand" href="index.html">
         <img src="assets/logo.svg" alt="Pivot Softwares logo" />
-        <span class="brand-name">Pivot Softwares</span>
-        <span class="brand-tag">IT Consulting</span>
+        <div class="brand-text">
+          <span class="brand-name">Pivot Softwares</span>
+          <span class="brand-tag">IT Consulting</span>
+        </div>
       </a>
-      <ul class="nav-links">
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="index.html#sectors">Sectors</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="insights.html">Insights</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
+
+      <button class="nav-toggle" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navMenu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <div class="nav-menu" id="navMenu">
+        <ul class="nav-links">
+          <li><a href="index.html#services">Services</a></li>
+          <li class="nav-dropdown">
+            <a href="index.html#sectors">Sectors</a>
+            <div class="dropdown-panel">
+              <a href="sectors/industrial-manufacturing.html">Industrial software</a>
+              <a href="sectors/fintech.html">Fintech</a>
+              <a href="sectors/public-sector.html">Public sector programs</a>
+            </div>
+          </li>
+          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html#engagement">Engagement</a></li>
+          <li><a href="index.html#why">Why Pivot</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#tech">Stack</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <a href="https://cal.com/pivotsoftwares/discovery" class="btn btn-primary" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -134,8 +504,195 @@
       <p>For questions about cookies, contact <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>.</p>
     </div>
   </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.svg" alt="Pivot Softwares logo" />
+          <div>
+            <div class="footer-copy">Pivot Softwares delivers industrial software, fintech platforms, and public sector systems with full-cycle ownership.</div>
+            <div class="footer-contact">
+              <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>
+              <span>Brussels, Belgium</span>
+              <a href="https://www.linkedin.com/in/gihedannabi/" class="footer-social">LinkedIn</a>
+              <a href="https://cal.com/pivotsoftwares/discovery" class="footer-cta" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#why">Why Pivot</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html#engagement">Engagement</a></li>
+          <li><a href="index.html#tech">Technology Stack</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Sectors</div>
+        <ul class="footer-links">
+          <li><a href="sectors/industrial-manufacturing.html">Industrial software</a></li>
+          <li><a href="sectors/fintech.html">Fintech</a></li>
+          <li><a href="sectors/public-sector.html">Public sector</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Legal</div>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms of service</a></li>
+          <li><a href="cookies.html">Cookie policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-note">(c) 2026 Pivot Softwares. Professional IT consulting and software delivery.</div>
+  </footer>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+    <div class="cookie-content">
+      <div>
+        <strong>Cookie preferences</strong>
+        <p>We use essential cookies to keep the site secure and reliable. Optional analytics cookies help us improve the experience.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieManage">Manage preferences</button>
+        <button class="btn btn-primary" type="button" id="cookieAccept">Accept all</button>
+      </div>
+    </div>
+    <div class="cookie-panel" id="cookiePanel" hidden>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label>Essential</label>
+          <span>Required for core site functionality.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" checked disabled />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label for="cookieAnalytics">Analytics</label>
+          <span>Helps us improve performance and content.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" id="cookieAnalytics" />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieReject">Reject non-essential</button>
+        <button class="btn btn-primary" type="button" id="cookieSave">Save preferences</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const navbar = document.getElementById('navbar');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.getElementById('navMenu');
+
+    const onScroll = () => {
+      if (navbar) {
+        navbar.classList.toggle('scrolled', window.scrollY > 12);
+      }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll);
+
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggle.setAttribute('aria-expanded', isOpen);
+      });
+      navMenu.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+          navMenu.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookiePanel = document.getElementById('cookiePanel');
+    const cookieManage = document.getElementById('cookieManage');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieSave = document.getElementById('cookieSave');
+    const cookieReject = document.getElementById('cookieReject');
+    const cookieAnalytics = document.getElementById('cookieAnalytics');
+
+    const getCookiePrefs = () => {
+      try {
+        return JSON.parse(localStorage.getItem('cookiePrefs'));
+      } catch (error) {
+        return null;
+      }
+    };
+
+    const saveCookiePrefs = (prefs) => {
+      if (!cookieBanner) return;
+      localStorage.setItem('cookiePrefs', JSON.stringify(prefs));
+      cookieBanner.classList.remove('visible');
+      if (cookiePanel) {
+        cookiePanel.hidden = true;
+      }
+    };
+
+    if (cookieBanner && !getCookiePrefs()) {
+      cookieBanner.classList.add('visible');
+    }
+
+    if (cookieManage && cookiePanel) {
+      cookieManage.addEventListener('click', () => {
+        cookiePanel.hidden = !cookiePanel.hidden;
+      });
+    }
+
+    if (cookieAccept) {
+      cookieAccept.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = true;
+        }
+        saveCookiePrefs({ essential: true, analytics: true });
+      });
+    }
+
+    if (cookieReject) {
+      cookieReject.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = false;
+        }
+        saveCookiePrefs({ essential: true, analytics: false });
+      });
+    }
+
+    if (cookieSave) {
+      cookieSave.addEventListener('click', () => {
+        saveCookiePrefs({
+          essential: true,
+          analytics: cookieAnalytics ? cookieAnalytics.checked : false
+        });
+      });
+    }
+  </script>
 </body>
 </html>
+
+
+
+
+
 
 
 

@@ -28,6 +28,21 @@
         "Industrial software delivery",
         "Fintech platforms",
         "Public sector systems"
+      ],
+      "areaServed": "Belgium",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Brussels",
+        "addressCountry": "BE"
+      },
+      "founder": {
+        "@type": "Person",
+        "name": "Gihed Annabi",
+        "jobTitle": "Founder",
+        "sameAs": "https://www.linkedin.com/in/gihedannabi/"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/gihedannabi/"
       ]
     }
   </script>
@@ -1204,8 +1219,14 @@
     .contact-form button:hover {
       background: var(--primary-dark);
     }
+    .form-honeypot {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
 
-    
     .contact-actions {
       display: flex;
       gap: 12px;
@@ -1216,6 +1237,11 @@
       font-size: 13px;
       color: var(--muted);
     }
+    .contact-detail a {
+      color: var(--primary-dark);
+      font-weight: 600;
+    }
+    .contact-detail a:hover { color: var(--primary); }
     .footer-grid {
       display: grid;
       grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
@@ -1230,6 +1256,17 @@
     .footer-contact a {
       color: var(--muted);
       font-size: 14px;
+    }
+    .footer-contact span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
     }
     .footer-cta {
       display: inline-flex;
@@ -1254,6 +1291,104 @@
     .footer-links a {
       color: var(--muted);
       font-size: 14px;
+    }
+
+    .cookie-banner {
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 20px 50px rgba(11, 18, 32, 0.2);
+      display: none;
+    }
+    .cookie-banner.visible { display: block; }
+    .cookie-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+    .cookie-content strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .cookie-content p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 520px;
+    }
+    .cookie-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .cookie-panel {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+    }
+    .cookie-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .cookie-option .cookie-text {
+      display: grid;
+      gap: 4px;
+    }
+    .cookie-option label {
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .cookie-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .cookie-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .cookie-slider {
+      position: absolute;
+      inset: 0;
+      background: #cbd5f0;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+    .cookie-slider::before {
+      content: "";
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.2s ease;
+    }
+    .cookie-switch input:checked + .cookie-slider {
+      background: var(--primary);
+    }
+    .cookie-switch input:checked + .cookie-slider::before {
+      transform: translateX(20px);
+    }
+    .cookie-switch input:disabled + .cookie-slider {
+      background: #94a3b8;
+      cursor: not-allowed;
     }
     @media (max-width: 1080px) {
       .hero-grid,
@@ -1280,6 +1415,7 @@
     @media (max-width: 780px) {
       .container { width: min(var(--container), calc(100% - 32px)); }
       .topbar { background: rgba(255,255,255,0.96); }
+      .cookie-content { flex-direction: column; align-items: flex-start; }
       .nav {
         min-height: 76px;
       }
@@ -1401,7 +1537,7 @@
         </ul>
 
         <div class="nav-actions">
-          <a href="#contact" class="btn btn-primary">Start a Project</a>
+          <a href="https://www.cal.eu/pivotsoftwares" class="btn btn-primary" data-cal-link="pivotsoftwares" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
         </div>
       </div>
     </div>
@@ -1414,15 +1550,15 @@
           <div class="reveal">
             <div class="eyebrow">Business-critical software delivery</div>
 
-            <h1>Software that keeps production lines running, payments reconciled, and public services dependable.</h1>
+            <h1>Industrial software. Fintech platforms. Public systems. Delivered reliably.</h1>
 
             <p class="lead">
-              Pivot Softwares delivers industrial software, fintech platforms, and public systems that must stay reliable under pressure. We take ownership from architecture through support so your teams can operate with confidence.
+              Pivot Softwares delivers industrial software, fintech platforms, and public systems that must stay dependable under pressure. We own delivery from architecture through support so your teams operate with confidence.
             </p>
-            <div class="hero-meta">Industrial systems, fintech operations, and public services with one accountable partner.</div>
+            <div class="hero-meta">Brussels-based delivery team covering industrial, fintech, and public sector programs.</div>
 
             <div class="hero-actions">
-              <a href="#contact" class="btn btn-primary">Request a Discovery Call</a>
+              <a href="https://www.cal.eu/pivotsoftwares" class="btn btn-primary" data-cal-link="pivotsoftwares" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
               <a href="#services" class="btn btn-secondary">Explore Services</a>
             </div>
 
@@ -1468,10 +1604,10 @@
 
         <div class="trust-bar reveal">
           <div class="trust-wrap">
+            <span class="trust-chip"><strong>3 core sectors:</strong> Industrial, fintech, public sector</span>
+            <span class="trust-chip"><strong>2 engagement models:</strong> Dedicated team or project delivery</span>
+            <span class="trust-chip"><strong>Location:</strong> Brussels, Belgium</span>
             <span class="trust-chip"><strong>Delivery model:</strong> Discovery, architecture, build, launch, support</span>
-            <span class="trust-chip"><strong>Focus:</strong> Business software with strong technical foundations</span>
-            <span class="trust-chip"><strong>Engagement:</strong> Dedicated team or project-based delivery</span>
-            <span class="trust-chip"><strong>Sectors:</strong> Industrial, fintech, public sector</span>
           </div>
         </div>
       </div>
@@ -1816,7 +1952,7 @@
             </div>
             <div class="about-actions">
               <a href="about.html" class="btn btn-secondary">Meet the team</a>
-              <a href="#contact" class="btn btn-primary">Start a project</a>
+              <a href="https://cal.eu/pivotsoftwares" class="btn btn-primary" data-cal-link="pivotsoftwares" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
             </div>
           </div>
         </div>
@@ -1995,14 +2131,18 @@
               proposal on scope, delivery, and ownership.
             </p>
             <div class="contact-actions">
-              <a href="mailto:contact@pivotsoftwares.com?subject=Discovery%20Call%20Request" class="btn btn-primary">Request a Discovery Call</a>
+              <a href="https://cal.eu/pivotsoftwares" class="btn btn-primary" data-cal-link="pivotsoftwares" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
               <a href="mailto:contact@pivotsoftwares.com" class="btn btn-secondary">Email us</a>
             </div>
             <a class="contact-email" href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>
           </div>
 
           <div class="contact-panel">
-            <form class="contact-form" action="mailto:contact@pivotsoftwares.com" method="post" enctype="text/plain">
+            <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact" />
+              <p class="form-honeypot">
+                <label>Do not fill this out if you are human: <input name="bot-field" /></label>
+              </p>
               <div class="form-row">
                 <input type="text" name="name" placeholder="Full name" required />
                 <input type="email" name="email" placeholder="Work email" required />
@@ -2013,7 +2153,7 @@
               </div>
               <textarea name="message" placeholder="Tell us about the project" required></textarea>
               <button type="submit">Send message</button>
-              <div class="form-note">Prefer a call? Use the button on the left to request a discovery call.</div>
+              <div class="form-note">Prefer a call? Use the booking link to select a time that works for you.</div>
             </form>
 
             <div class="contact-detail">
@@ -2027,6 +2167,14 @@
             <div class="contact-detail">
               <span class="label">Specialization</span>
               <span class="value">Industrial software, fintech platforms, and public sector systems</span>
+            </div>
+            <div class="contact-detail">
+              <span class="label">Location</span>
+              <span class="value">Brussels, Belgium</span>
+            </div>
+            <div class="contact-detail">
+              <span class="label">LinkedIn</span>
+              <span class="value"><a href="https://www.linkedin.com/in/gihedannabi/">Gihed Annabi</a></span>
             </div>
           </div>
         </div>
@@ -2043,7 +2191,9 @@
             <div class="footer-copy">Pivot Softwares delivers industrial software, fintech platforms, and public sector systems with full-cycle ownership.</div>
             <div class="footer-contact">
               <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>
-              <a href="#contact" class="footer-cta">Request a discovery call</a>
+              <span>Brussels, Belgium</span>
+              <a href="https://www.linkedin.com/in/gihedannabi/" class="footer-social">LinkedIn</a>
+              <a href="https://cal.eu/pivotsoftwares" class="footer-cta" data-cal-link="pivotsoftwares" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
             </div>
           </div>
         </div>
@@ -2086,6 +2236,45 @@
     <div class="container footer-note">(c) 2026 Pivot Softwares. Professional IT consulting and software delivery.</div>
   </footer>
 
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+    <div class="cookie-content">
+      <div>
+        <strong>Cookie preferences</strong>
+        <p>We use essential cookies to keep the site secure and reliable. Optional analytics cookies help us improve the experience.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieManage">Manage preferences</button>
+        <button class="btn btn-primary" type="button" id="cookieAccept">Accept all</button>
+      </div>
+    </div>
+    <div class="cookie-panel" id="cookiePanel" hidden>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label>Essential</label>
+          <span>Required for core site functionality.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" checked disabled />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label for="cookieAnalytics">Analytics</label>
+          <span>Helps us improve performance and content.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" id="cookieAnalytics" />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieReject">Reject non-essential</button>
+        <button class="btn btn-primary" type="button" id="cookieSave">Save preferences</button>
+      </div>
+    </div>
+  </div>
+
   <script>
     const navbar = document.getElementById('navbar');
     const reveals = document.querySelectorAll('.reveal');
@@ -2121,9 +2310,73 @@
     }, { threshold: 0.14 });
 
     reveals.forEach(el => observer.observe(el));
+
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookiePanel = document.getElementById('cookiePanel');
+    const cookieManage = document.getElementById('cookieManage');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieSave = document.getElementById('cookieSave');
+    const cookieReject = document.getElementById('cookieReject');
+    const cookieAnalytics = document.getElementById('cookieAnalytics');
+
+    const getCookiePrefs = () => {
+      try {
+        return JSON.parse(localStorage.getItem('cookiePrefs'));
+      } catch (error) {
+        return null;
+      }
+    };
+
+    const saveCookiePrefs = (prefs) => {
+      if (!cookieBanner) return;
+      localStorage.setItem('cookiePrefs', JSON.stringify(prefs));
+      cookieBanner.classList.remove('visible');
+      if (cookiePanel) {
+        cookiePanel.hidden = true;
+      }
+    };
+
+    if (cookieBanner && !getCookiePrefs()) {
+      cookieBanner.classList.add('visible');
+    }
+
+    if (cookieManage && cookiePanel) {
+      cookieManage.addEventListener('click', () => {
+        cookiePanel.hidden = !cookiePanel.hidden;
+      });
+    }
+
+    if (cookieAccept) {
+      cookieAccept.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = true;
+        }
+        saveCookiePrefs({ essential: true, analytics: true });
+      });
+    }
+
+    if (cookieReject) {
+      cookieReject.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = false;
+        }
+        saveCookiePrefs({ essential: true, analytics: false });
+      });
+    }
+
+    if (cookieSave) {
+      cookieSave.addEventListener('click', () => {
+        saveCookiePrefs({
+          essential: true,
+          analytics: cookieAnalytics ? cookieAnalytics.checked : false
+        });
+      });
+    }
   </script>
 </body>
 </html>
+
+
 
 
 

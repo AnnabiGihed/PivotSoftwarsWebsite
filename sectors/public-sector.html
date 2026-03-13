@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Public Sector Software Delivery | Pivot Softwares</title>
-  <meta name="description" content="Public sector software delivery for citizen services, internal workflows, and data platforms." />
+  <meta name="description" content="Public sector delivery for city services, permit workflows, case management, and data governance." />
   <link rel="canonical" href="https://pivotsoftwares.com/sectors/public-sector.html" />
   <meta property="og:title" content="Public Sector Software Delivery | Pivot Softwares" />
-  <meta property="og:description" content="Public sector platforms for citizen services, internal workflows, and governance-aligned delivery." />
+  <meta property="og:description" content="Public sector platforms for city services, case management, and governance-aligned delivery." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pivotsoftwares.com/sectors/public-sector.html" />
   <meta property="og:image" content="https://images.pexels.com/photos/13138090/pexels-photo-13138090.jpeg?cs=srgb&dl=pexels-laura-paredis-1047081-13138090.jpg&fm=jpg" />
@@ -384,12 +384,16 @@
       .focus-grid {
         grid-template-columns: 1fr;
       }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .container { width: min(var(--container), calc(100% - 32px)); }
     }
 
     @media (max-width: 780px) {
       .topbar { background: rgba(255,255,255,0.96); }
       .nav { min-height: 76px; }
+      .cookie-content { flex-direction: column; align-items: flex-start; }
       .nav-toggle { display: inline-flex; margin-left: auto; }
       .nav-menu {
         position: fixed;
@@ -415,6 +419,7 @@
       }
       .nav-actions { width: 100%; flex-direction: column; }
       .nav-actions .btn { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
       .dropdown-panel {
         position: static;
         opacity: 1;
@@ -425,6 +430,179 @@
         padding: 8px 0 0 12px;
       }
       .nav-dropdown > a::after { display: none; }
+    }
+  
+    footer {
+      padding: 26px 0 42px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .footer-brand img {
+      height: 38px;
+      width: auto;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-contact {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .footer-contact a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-contact span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .footer-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .footer-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 18px;
+    }
+
+    .cookie-banner {
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 20px 50px rgba(11, 18, 32, 0.2);
+      display: none;
+    }
+    .cookie-banner.visible { display: block; }
+    .cookie-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+    .cookie-content strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .cookie-content p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 520px;
+    }
+    .cookie-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .cookie-panel {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+    }
+    .cookie-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .cookie-option .cookie-text {
+      display: grid;
+      gap: 4px;
+    }
+    .cookie-option label {
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .cookie-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .cookie-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .cookie-slider {
+      position: absolute;
+      inset: 0;
+      background: #cbd5f0;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+    .cookie-slider::before {
+      content: "";
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.2s ease;
+    }
+    .cookie-switch input:checked + .cookie-slider {
+      background: var(--primary);
+    }
+    .cookie-switch input:checked + .cookie-slider::before {
+      transform: translateX(20px);
+    }
+    .cookie-switch input:disabled + .cookie-slider {
+      background: #94a3b8;
+      cursor: not-allowed;
     }
   </style>
 </head>
@@ -466,7 +644,7 @@
         </ul>
 
         <div class="nav-actions">
-          <a href="../index.html#contact" class="btn btn-primary">Start a Project</a>
+          <a href="https://cal.com/pivotsoftwares/discovery" class="btn btn-primary" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
         </div>
       </div>
     </div>
@@ -565,12 +743,105 @@
             <h3>Need public sector delivery that stands up to scrutiny?</h3>
             <p>Tell us about your programs, stakeholders, and the services you need to support.</p>
           </div>
-          <a href="../index.html#contact" class="btn btn-primary">Start a project</a>
+          <a href="https://cal.com/pivotsoftwares/discovery" class="btn btn-primary" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
         </div>
       </div>
     </section>
   </main>
 
+  
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="../assets/logo.svg" alt="Pivot Softwares logo" />
+          <div>
+            <div class="footer-copy">Pivot Softwares delivers industrial software, fintech platforms, and public sector systems with full-cycle ownership.</div>
+            <div class="footer-contact">
+              <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>
+              <span>Brussels, Belgium</span>
+              <a href="https://www.linkedin.com/in/gihedannabi/" class="footer-social">LinkedIn</a>
+              <a href="https://cal.com/pivotsoftwares/discovery" class="footer-cta" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="../about.html">About</a></li>
+          <li><a href="../index.html#why">Why Pivot</a></li>
+          <li><a href="../insights.html">Insights</a></li>
+          <li><a href="../index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="../index.html#process">Process</a></li>
+          <li><a href="../index.html#engagement">Engagement</a></li>
+          <li><a href="../index.html#tech">Technology Stack</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Sectors</div>
+        <ul class="footer-links">
+          <li><a href="industrial-manufacturing.html">Industrial software</a></li>
+          <li><a href="fintech.html">Fintech</a></li>
+          <li><a href="public-sector.html">Public sector</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Legal</div>
+        <ul class="footer-links">
+          <li><a href="../privacy.html">Privacy policy</a></li>
+          <li><a href="../terms.html">Terms of service</a></li>
+          <li><a href="../cookies.html">Cookie policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-note">(c) 2026 Pivot Softwares. Professional IT consulting and software delivery.</div>
+  </footer>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+    <div class="cookie-content">
+      <div>
+        <strong>Cookie preferences</strong>
+        <p>We use essential cookies to keep the site secure and reliable. Optional analytics cookies help us improve the experience.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieManage">Manage preferences</button>
+        <button class="btn btn-primary" type="button" id="cookieAccept">Accept all</button>
+      </div>
+    </div>
+    <div class="cookie-panel" id="cookiePanel" hidden>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label>Essential</label>
+          <span>Required for core site functionality.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" checked disabled />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label for="cookieAnalytics">Analytics</label>
+          <span>Helps us improve performance and content.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" id="cookieAnalytics" />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieReject">Reject non-essential</button>
+        <button class="btn btn-primary" type="button" id="cookieSave">Save preferences</button>
+      </div>
+    </div>
+  </div>
   <script>
     const navbar = document.getElementById('navbar');
     const navToggle = document.querySelector('.nav-toggle');
@@ -596,9 +867,77 @@
         });
       });
     }
-  </script>
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookiePanel = document.getElementById('cookiePanel');
+    const cookieManage = document.getElementById('cookieManage');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieSave = document.getElementById('cookieSave');
+    const cookieReject = document.getElementById('cookieReject');
+    const cookieAnalytics = document.getElementById('cookieAnalytics');
+
+    const getCookiePrefs = () => {
+      try {
+        return JSON.parse(localStorage.getItem('cookiePrefs'));
+      } catch (error) {
+        return null;
+      }
+    };
+
+    const saveCookiePrefs = (prefs) => {
+      if (!cookieBanner) return;
+      localStorage.setItem('cookiePrefs', JSON.stringify(prefs));
+      cookieBanner.classList.remove('visible');
+      if (cookiePanel) {
+        cookiePanel.hidden = true;
+      }
+    };
+
+    if (cookieBanner && !getCookiePrefs()) {
+      cookieBanner.classList.add('visible');
+    }
+
+    if (cookieManage && cookiePanel) {
+      cookieManage.addEventListener('click', () => {
+        cookiePanel.hidden = !cookiePanel.hidden;
+      });
+    }
+
+    if (cookieAccept) {
+      cookieAccept.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = true;
+        }
+        saveCookiePrefs({ essential: true, analytics: true });
+      });
+    }
+
+    if (cookieReject) {
+      cookieReject.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = false;
+        }
+        saveCookiePrefs({ essential: true, analytics: false });
+      });
+    }
+
+    if (cookieSave) {
+      cookieSave.addEventListener('click', () => {
+        saveCookiePrefs({
+          essential: true,
+          analytics: cookieAnalytics ? cookieAnalytics.checked : false
+        });
+      });
+    }
+  
 </body>
 </html>
+
+
+
+
+
+
+
 
 
 

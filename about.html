@@ -296,20 +296,238 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 22px;
     }
     .team-card {
       background: #fff;
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      overflow: hidden;
+      padding: 24px;
       box-shadow: 0 10px 24px rgba(11, 18, 32, 0.05);
+      display: grid;
+      gap: 16px;
     }
-    .team-card img { width: 100%; height: 220px; object-fit: cover; }
-    .team-card div { padding: 20px; }
-    .team-card h3 { font-size: 18px; margin-bottom: 6px; color: var(--navy); }
+    .team-card.featured {
+      grid-column: span 2;
+      grid-template-columns: 0.9fr 1.1fr;
+      align-items: center;
+    }
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #1f5fbf, #0f766e);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 32px;
+      letter-spacing: 0.08em;
+      background-size: cover;
+      background-position: center;
+    }
+    .team-role {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--primary-dark);
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .team-card h3 { font-size: 20px; margin-bottom: 8px; color: var(--navy); }
     .team-card p { color: var(--muted); font-size: 14px; }
+    .team-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+    .team-note {
+      margin-top: 18px;
+      background: var(--bg-soft);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 26px 0 42px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .footer-brand img {
+      height: 38px;
+      width: auto;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-contact {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .footer-contact a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-contact span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .footer-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .footer-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 18px;
+    }
+
+    .cookie-banner {
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 20px 50px rgba(11, 18, 32, 0.2);
+      display: none;
+    }
+    .cookie-banner.visible { display: block; }
+    .cookie-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+    .cookie-content strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .cookie-content p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 520px;
+    }
+    .cookie-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .cookie-panel {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+    }
+    .cookie-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .cookie-option .cookie-text {
+      display: grid;
+      gap: 4px;
+    }
+    .cookie-option label {
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .cookie-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .cookie-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .cookie-slider {
+      position: absolute;
+      inset: 0;
+      background: #cbd5f0;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+    .cookie-slider::before {
+      content: "";
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.2s ease;
+    }
+    .cookie-switch input:checked + .cookie-slider {
+      background: var(--primary);
+    }
+    .cookie-switch input:checked + .cookie-slider::before {
+      transform: translateX(20px);
+    }
+    .cookie-switch input:disabled + .cookie-slider {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
 
     .cta-band {
       background: var(--navy);
@@ -333,12 +551,19 @@
       .team-grid {
         grid-template-columns: 1fr;
       }
+      .team-card.featured {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .container { width: min(var(--container), calc(100% - 32px)); }
     }
 
     @media (max-width: 780px) {
       .topbar { background: rgba(255,255,255,0.96); }
       .nav { min-height: 76px; }
+      .cookie-content { flex-direction: column; align-items: flex-start; }
       .nav-toggle { display: inline-flex; margin-left: auto; }
       .nav-menu {
         position: fixed;
@@ -364,6 +589,7 @@
       }
       .nav-actions { width: 100%; flex-direction: column; }
       .nav-actions .btn { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
       .dropdown-panel {
         position: static;
         opacity: 1;
@@ -415,7 +641,7 @@
         </ul>
 
         <div class="nav-actions">
-          <a href="index.html#contact" class="btn btn-primary">Start a Project</a>
+          <a href="https://cal.com/pivotsoftwares/discovery" class="btn btn-primary" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
         </div>
       </div>
     </div>
@@ -483,33 +709,25 @@
     <section>
       <div class="container">
         <div class="section-head">
-          <div class="section-label">Team highlights</div>
-          <h2 class="section-title">Leadership and delivery roles.</h2>
-          <p class="section-copy">We assemble teams based on the operational complexity of your system and the stakeholders involved.</p>
+          <div class="section-label">Leadership</div>
+          <h2 class="section-title">Founder-led delivery with senior accountability.</h2>
+          <p class="section-copy">You work directly with leadership on scope, delivery risk, and stakeholder alignment from discovery through launch.</p>
         </div>
         <div class="team-grid">
-          <div class="team-card">
-            <img src="https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=1200&q=80" alt="Delivery leadership" />
-            <div>
-              <h3>Delivery lead</h3>
-              <p>Accountable for governance, risk management, and stakeholder communication throughout the project.</p>
+          <article class="team-card featured">
+            <div class="team-photo" style="background-image: url('assets/gihed-annabi.jpg');" role="img" aria-label="Gihed Annabi">
+              <span>GA</span>
             </div>
-          </div>
-          <div class="team-card">
-            <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1200&q=80" alt="Solutions architecture" />
             <div>
-              <h3>Solutions architect</h3>
-              <p>Defines system architecture, integration points, and the technical roadmap for long-term stability.</p>
+              <h3>Gihed Annabi</h3>
+              <div class="team-role">Founder and Delivery Lead</div>
+              <p>Gihed founded Pivot Softwares to bring clear delivery ownership to long-lived industrial, fintech, and public sector platforms.</p>
+              <p>He leads discovery, stakeholder alignment, and execution, ensuring software delivery stays grounded in operational reality and risk is managed from day one.</p>
+              <a href="https://www.linkedin.com/in/gihedannabi/" class="team-link">LinkedIn profile</a>
             </div>
-          </div>
-          <div class="team-card">
-            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?auto=format&fit=crop&w=1200&q=80" alt="Engineering leadership" />
-            <div>
-              <h3>Engineering lead</h3>
-              <p>Guides implementation quality, test strategy, and delivery standards across the engineering team.</p>
-            </div>
-          </div>
+          </article>
         </div>
+        <div class="team-note">Senior delivery leadership, solutions architecture, and engineering leadership are staffed per engagement. We introduce the delivery leads assigned to your program during discovery.</div>
       </div>
     </section>
 
@@ -520,11 +738,104 @@
             <h3>Want to meet the team behind your delivery?</h3>
             <p>We will introduce the delivery leads and architects assigned to your engagement during discovery.</p>
           </div>
-          <a href="index.html#contact" class="btn btn-primary">Start a project</a>
+          <a href="https://cal.com/pivotsoftwares/discovery" class="btn btn-primary" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
         </div>
       </div>
     </section>
   </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.svg" alt="Pivot Softwares logo" />
+          <div>
+            <div class="footer-copy">Pivot Softwares delivers industrial software, fintech platforms, and public sector systems with full-cycle ownership.</div>
+            <div class="footer-contact">
+              <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>
+              <span>Brussels, Belgium</span>
+              <a href="https://www.linkedin.com/in/gihedannabi/" class="footer-social">LinkedIn</a>
+              <a href="https://cal.com/pivotsoftwares/discovery" class="footer-cta" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#why">Why Pivot</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html#engagement">Engagement</a></li>
+          <li><a href="index.html#tech">Technology Stack</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Sectors</div>
+        <ul class="footer-links">
+          <li><a href="sectors/industrial-manufacturing.html">Industrial software</a></li>
+          <li><a href="sectors/fintech.html">Fintech</a></li>
+          <li><a href="sectors/public-sector.html">Public sector</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Legal</div>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms of service</a></li>
+          <li><a href="cookies.html">Cookie policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-note">(c) 2026 Pivot Softwares. Professional IT consulting and software delivery.</div>
+  </footer>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+    <div class="cookie-content">
+      <div>
+        <strong>Cookie preferences</strong>
+        <p>We use essential cookies to keep the site secure and reliable. Optional analytics cookies help us improve the experience.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieManage">Manage preferences</button>
+        <button class="btn btn-primary" type="button" id="cookieAccept">Accept all</button>
+      </div>
+    </div>
+    <div class="cookie-panel" id="cookiePanel" hidden>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label>Essential</label>
+          <span>Required for core site functionality.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" checked disabled />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label for="cookieAnalytics">Analytics</label>
+          <span>Helps us improve performance and content.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" id="cookieAnalytics" />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieReject">Reject non-essential</button>
+        <button class="btn btn-primary" type="button" id="cookieSave">Save preferences</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     const navbar = document.getElementById('navbar');
@@ -551,9 +862,73 @@
         });
       });
     }
+
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookiePanel = document.getElementById('cookiePanel');
+    const cookieManage = document.getElementById('cookieManage');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieSave = document.getElementById('cookieSave');
+    const cookieReject = document.getElementById('cookieReject');
+    const cookieAnalytics = document.getElementById('cookieAnalytics');
+
+    const getCookiePrefs = () => {
+      try {
+        return JSON.parse(localStorage.getItem('cookiePrefs'));
+      } catch (error) {
+        return null;
+      }
+    };
+
+    const saveCookiePrefs = (prefs) => {
+      if (!cookieBanner) return;
+      localStorage.setItem('cookiePrefs', JSON.stringify(prefs));
+      cookieBanner.classList.remove('visible');
+      if (cookiePanel) {
+        cookiePanel.hidden = true;
+      }
+    };
+
+    if (cookieBanner && !getCookiePrefs()) {
+      cookieBanner.classList.add('visible');
+    }
+
+    if (cookieManage && cookiePanel) {
+      cookieManage.addEventListener('click', () => {
+        cookiePanel.hidden = !cookiePanel.hidden;
+      });
+    }
+
+    if (cookieAccept) {
+      cookieAccept.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = true;
+        }
+        saveCookiePrefs({ essential: true, analytics: true });
+      });
+    }
+
+    if (cookieReject) {
+      cookieReject.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = false;
+        }
+        saveCookiePrefs({ essential: true, analytics: false });
+      });
+    }
+
+    if (cookieSave) {
+      cookieSave.addEventListener('click', () => {
+        saveCookiePrefs({
+          essential: true,
+          analytics: cookieAnalytics ? cookieAnalytics.checked : false
+        });
+      });
+    }
   </script>
 </body>
 </html>
+
+
 
 
 

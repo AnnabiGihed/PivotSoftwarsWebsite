@@ -265,13 +265,13 @@
       border-radius: var(--radius-xl);
       padding: 28px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1fr;
       gap: 24px;
       box-shadow: 0 10px 24px rgba(11, 18, 32, 0.05);
     }
     .insight-card img {
       width: 100%;
-      height: 220px;
+      height: 280px;
       object-fit: cover;
       border-radius: 18px;
     }
@@ -288,11 +288,17 @@
       color: var(--navy);
       margin-bottom: 12px;
     }
+    .insight-card h3 {
+      font-size: 18px;
+      color: var(--navy);
+      margin: 18px 0 8px;
+    }
     .insight-card p {
       color: var(--muted);
       font-size: 15px;
       margin-bottom: 12px;
     }
+    .insight-card p + p { margin-top: 10px; }
     .insight-card ul {
       list-style: none;
       display: grid;
@@ -315,10 +321,186 @@
       top: 9px;
     }
 
+    footer {
+      padding: 26px 0 42px;
+      border-top: 1px solid var(--line);
+      background: #fff;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+    .footer-brand img {
+      height: 38px;
+      width: auto;
+    }
+    .footer-copy {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-contact {
+      display: grid;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .footer-contact a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-contact span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-social {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .footer-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 600;
+      color: var(--primary-dark);
+    }
+    .footer-title {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .footer-links {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .footer-links a {
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .footer-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 18px;
+    }
+
+    .cookie-banner {
+      position: fixed;
+      left: 20px;
+      right: 20px;
+      bottom: 20px;
+      z-index: 9999;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 20px 50px rgba(11, 18, 32, 0.2);
+      display: none;
+    }
+    .cookie-banner.visible { display: block; }
+    .cookie-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+    .cookie-content strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .cookie-content p {
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 520px;
+    }
+    .cookie-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .cookie-panel {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+      display: grid;
+      gap: 12px;
+    }
+    .cookie-option {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+    .cookie-option .cookie-text {
+      display: grid;
+      gap: 4px;
+    }
+    .cookie-option label {
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .cookie-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .cookie-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    .cookie-slider {
+      position: absolute;
+      inset: 0;
+      background: #cbd5f0;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+    .cookie-slider::before {
+      content: "";
+      position: absolute;
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      top: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: 0.2s ease;
+    }
+    .cookie-switch input:checked + .cookie-slider {
+      background: var(--primary);
+    }
+    .cookie-switch input:checked + .cookie-slider::before {
+      transform: translateX(20px);
+    }
+    .cookie-switch input:disabled + .cookie-slider {
+      background: #94a3b8;
+      cursor: not-allowed;
+    }
+
     @media (max-width: 980px) {
       .hero-grid,
       .insight-card {
         grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
       .container { width: min(var(--container), calc(100% - 32px)); }
     }
@@ -326,6 +508,7 @@
     @media (max-width: 780px) {
       .topbar { background: rgba(255,255,255,0.96); }
       .nav { min-height: 76px; }
+      .cookie-content { flex-direction: column; align-items: flex-start; }
       .nav-toggle { display: inline-flex; margin-left: auto; }
       .nav-menu {
         position: fixed;
@@ -351,6 +534,7 @@
       }
       .nav-actions { width: 100%; flex-direction: column; }
       .nav-actions .btn { width: 100%; }
+      .footer-grid { grid-template-columns: 1fr; }
       .dropdown-panel {
         position: static;
         opacity: 1;
@@ -402,7 +586,7 @@
         </ul>
 
         <div class="nav-actions">
-          <a href="index.html#contact" class="btn btn-primary">Start a Project</a>
+          <a href="https://cal.com/pivotsoftwares/discovery" class="btn btn-primary" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
         </div>
       </div>
     </div>
@@ -431,16 +615,64 @@
             <div class="insight-meta">Industrial software</div>
             <h2>Designing machine integration that operators can trust.</h2>
             <p>
-              Industrial platforms fail when drivers behave inconsistently or when operators do not have a clear view of machine status. The systems that endure separate control logic from presentation, define stable device states, and monitor exceptions in real time.
+              Industrial software sits between the machine and the operator. When it is wrong, production stops and the cost is immediate. That is why delivery has to be grounded in how the line actually runs, not just in how the requirements were written.
             </p>
             <p>
-              A reliable integration layer includes clear device contracts, predictable error handling, and tooling that helps operators understand what to do next without escalating every issue to engineering.
+              We have delivered systems that connect precision equipment, production tooling, and operator workstations. The common thread is always the same: a dependable driver layer, clear visualization of what the machine is doing, and tooling that lets operations solve issues without waiting on engineering.
             </p>
+            <h3>Start with the production reality</h3>
+            <p>
+              Before architecture, we map how jobs are created, queued, approved, and released. Changeovers, calibration cycles, manual overrides, and safety interlocks are the moments where software gets tested. A good design anticipates those moments and turns them into supported states instead of exceptions that only experts can handle.
+            </p>
+            <p>
+              That means aligning with the actual roles on the shop floor. Operators need fast feedback and clear next steps. Supervisors need visibility into throughput and quality. Maintenance teams need diagnostic context that points to root causes, not just a generic alarm.
+            </p>
+            <h3>Driver layers that survive the shop floor</h3>
+            <p>
+              Machine integration is not a one-time connector. It is a contract that has to remain stable across firmware versions, different machine models, and varying plant conditions. We build driver layers that isolate device protocols behind predictable state machines, with well-defined recovery paths for timeouts, partial jobs, and safety stops.
+            </p>
+            <p>
+              In multi-machine environments, the driver layer must also normalize capabilities so the rest of the system does not branch for every device. That means capability discovery, configuration profiles, and a simulation mode for testing without hardware. When a machine goes offline, operations should have a safe fallback and a clear reason why.
+            </p>
+            <h3>Visualization, CAM and CAD workflows, and toolpath reliability</h3>
+            <p>
+              Industrial software is often anchored by 3D visualization. Operators and engineers rely on a clear view of toolpaths, geometry, and machine envelopes to avoid costly errors. We have delivered 3D rendering and visualization components that keep performance stable while handling large models, high-detail parts, and multiple viewpoints.
+            </p>
+            <p>
+              When CAM and CAD workflows are part of the system, data integrity is critical. Units, coordinate systems, and tool orientation must remain consistent from import to simulation to execution. We design validation steps that catch geometry issues early, and we build preview and simulation tooling that mirrors machine behavior so operators can trust the output before committing a job.
+            </p>
+            <h3>Integration with planning and quality systems</h3>
+            <p>
+              Production data only becomes useful when it flows into MES, ERP, and quality systems in a consistent format. We build interfaces that capture job context, serials, measurement data, and non-conformance reasons so downstream teams can trust the numbers. That includes buffering and retry patterns for shop-floor networks, plus clear data ownership so there is no ambiguity between machine readings and manual adjustments.
+            </p>
+            <h3>Release discipline and long-term support</h3>
+            <p>
+              Industrial platforms live far longer than a typical software product. Upgrades often happen during narrow maintenance windows, and the cost of failure is high. We plan for versioned configurations, backward-compatible driver updates, and phased rollouts that keep production running while new features land.
+            </p>
+            <p>
+              That discipline extends to documentation and training. When a new operator starts or a new machine model is introduced, the software should remain intuitive and the operational playbooks should already exist. Reliable delivery is as much about the lifecycle as it is about the initial release.
+            </p>
+            <h3>Operational tooling and diagnostics</h3>
+            <p>
+              The most valuable industrial platforms give operations the ability to solve problems fast. That means rich status telemetry, event logs that read like a timeline, and diagnostic screens that are built for the people who use them every day. We favor structured event models that make it easy to filter by job, machine, or error type.
+            </p>
+            <p>
+              We also plan for supportability. Remote access is not always possible, so local diagnostics, exportable reports, and reproducible test cases become essential. When a line is down, the difference between vague logs and actionable traces can be hours of lost production.
+            </p>
+            <p>
+              Performance testing in industrial systems goes beyond throughput. It covers cold starts, long-running stability, and behavior under degraded network conditions. We simulate those scenarios early and validate that the system stays responsive for operators, because slow interfaces can be just as disruptive as downtime.
+            </p>
+            <h3>What strong industrial delivery looks like</h3>
             <ul>
-              <li>Separate device drivers from operator workflows</li>
-              <li>Design state machines that survive real conditions</li>
-              <li>Make monitoring and diagnostics available to operations</li>
+              <li>Driver abstractions that protect the application from protocol changes.</li>
+              <li>Toolpath preview and simulation that reflect actual machine constraints.</li>
+              <li>3D visualization that stays responsive with large models.</li>
+              <li>Operator experiences that simplify recovery and reduce escalation.</li>
+              <li>Diagnostics and telemetry that support continuous improvement.</li>
             </ul>
+            <p>
+              Industrial software has to be stable, explainable, and resilient. When we deliver for this sector, we focus on the whole chain from visualization to drivers to operations tooling, because trust is built across the workflow, not at a single interface.
+            </p>
           </div>
           <img src="https://images.pexels.com/photos/7097290/pexels-photo-7097290.jpeg?cs=srgb&dl=pexels-optlasers-7097290.jpg&fm=jpg" alt="Industrial equipment in operation" />
         </article>
@@ -450,16 +682,70 @@
             <div class="insight-meta">Fintech</div>
             <h2>Keeping transaction flows audit-ready without slowing operations.</h2>
             <p>
-              Fintech teams need approvals, reconciliation, and exception handling to be dependable without adding friction to everyday operations. The strongest platforms treat auditability as a product requirement, not a reporting afterthought.
+              Fintech platforms are judged by trust and speed. Transactions must settle, approvals must be traceable, and operations teams cannot be left guessing when something goes wrong. The result is a discipline that looks as much like operations engineering as it does product development.
             </p>
             <p>
-              Clear lineage for every transaction, well-defined approval steps, and consistent data models are what allow compliance and operations teams to move quickly with confidence.
+              Our delivery experience spans core banking integrations with Temenos T24, mobile banking channels, loans management systems, real estate finance platforms, and automated regulatory declarations to financial authorities. Those systems demand consistency across data models, access controls, and reporting, because every discrepancy becomes a cost or a risk.
             </p>
+            <h3>Reconciliation as a product feature</h3>
+            <p>
+              Reconciliation cannot be a back-office process bolted on after launch. It has to be part of the product flow, with a clear lineage from request to settlement. Multi-rail payments, card transactions, and bank transfers each have different lifecycles and failure points. A strong platform models those lifecycles explicitly, with a ledger that reflects the truth of each handoff.
+            </p>
+            <p>
+              We design reconciliation workflows that surface exceptions early, route them to the right teams, and keep a clear record of who resolved what and why. The goal is not just to balance the books, but to shorten the time from issue to resolution while preserving an audit trail that regulators can trust.
+            </p>
+            <h3>Approval flows and audit readiness</h3>
+            <p>
+              Fintech programs live under constant oversight, whether through internal governance, partner bank requirements, or direct regulatory scrutiny. That means approvals, segregation of duties, and immutable logs are not optional. We implement approval chains that are explicit, time-stamped, and tied to business context so compliance teams can answer questions without manual investigation.
+            </p>
+            <p>
+              Audit readiness also depends on data discipline. We normalize identifiers across systems, map transaction states consistently, and ensure data exports align with regulatory templates. When automated declarations are required, we build validation and reconciliation steps so the declaration matches the source data, not a secondary report.
+            </p>
+            <h3>Data consistency and reporting pipelines</h3>
+            <p>
+              Fintech reporting is not a single extract. It is a pipeline that blends core banking, payment processors, and operational tooling into a single narrative. We establish master data definitions and consistent reference tables so every system speaks the same language for customers, accounts, and transactions.
+            </p>
+            <p>
+              That consistency is what makes close cycles predictable. When numbers reconcile, finance can act quickly. When they do not, the system should point to the root source, not force teams to search across multiple exports and spreadsheets.
+            </p>
+            <h3>Loans management and real estate finance workflows</h3>
+            <p>
+              Loans and real estate finance add complexity beyond a typical payment flow. Repayment schedules, interest calculations, collateral handling, and customer communications all have to stay synchronized. We design systems that handle lifecycle events such as restructures, prepayments, and fee adjustments with full traceability and clear reporting.
+            </p>
+            <p>
+              For operational teams, the difference between a reliable loans platform and a fragile one is the quality of the exception tooling. That includes queue management, reason codes that match real operational decisions, and workflows that preserve customer context alongside the financial data.
+            </p>
+            <p>
+              Real estate finance adds valuation cycles, drawdowns, and documentation controls that must remain aligned with customer communications. We build workflows that tie documents, approvals, and disbursements to the same transaction timeline so teams can explain every step with confidence.
+            </p>
+            <h3>Mobile banking and customer-facing platforms</h3>
+            <p>
+              Mobile banking is often where customers feel the impact of backend reliability. Latency, partial updates, or inconsistent balances erode trust quickly. We design mobile and channel integrations that rely on resilient APIs, clear cache and refresh strategies, and user experiences that explain what is happening when a transaction is still pending.
+            </p>
+            <p>
+              When things do go wrong, the platform must provide a full operational trail. That includes trace identifiers that connect a mobile action to the core banking and payment systems, along with automated notifications that reduce inbound support volume.
+            </p>
+            <h3>Operational readiness and incident response</h3>
+            <p>
+              Reliable fintech delivery includes the operational playbook. We define alert thresholds, escalation paths, and runbooks that explain what to do when a payment rail is delayed or a declaration fails validation. This keeps support teams effective under pressure and reduces downtime.
+            </p>
+            <p>
+              We also design for idempotency, replay, and safe retries, so the system can recover without duplicating transactions. The outcome is an operations team that can respond quickly while keeping data integrity intact.
+            </p>
+            <p>
+              Strong partnerships with risk and compliance teams keep releases safe without blocking delivery. We include them early so controls are validated well before launch.
+            </p>
+            <h3>What strong fintech delivery includes</h3>
             <ul>
-              <li>Build reconciliation into the core flow, not a separate process</li>
-              <li>Capture lineage and approvals at every handoff</li>
-              <li>Expose clear exception queues for operations teams</li>
+              <li>Temenos T24 integration patterns that preserve core banking integrity.</li>
+              <li>Multi-rail reconciliation with automated exception handling.</li>
+              <li>Loans management workflows with clear lifecycle events.</li>
+              <li>Automated regulatory declarations backed by validated data.</li>
+              <li>Operational dashboards that show risk, queue volume, and aging.</li>
             </ul>
+            <p>
+              The best fintech systems feel predictable to operations and transparent to compliance. That is the bar we design to, whether the work is a new platform or an extension of an existing banking core.
+            </p>
           </div>
           <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80" alt="Fintech operations and reporting" />
         </article>
@@ -469,22 +755,179 @@
             <div class="insight-meta">Public sector</div>
             <h2>Delivering public services with governance built in.</h2>
             <p>
-              Public platforms serve many stakeholders and must remain stable for years. A dependable service uses consistent workflows, accessible interfaces, and documentation that keeps decisions traceable.
+              Public sector systems are built to last. Citizens rely on them, departments depend on them, and policy changes have to be reflected without breaking essential services. That combination demands clear governance and delivery discipline from day one.
             </p>
             <p>
-              The most successful programs define clear ownership across departments, align data standards early, and ensure that service status is visible to both citizens and internal teams.
+              We design and deliver public platforms with a focus on traceability, accessibility, and long-term maintainability. Whether the system serves a city hall process, a regional agency, or a multi-department program, the priorities are consistent: the service must be easy to use, stable across years, and transparent when decisions are made.
             </p>
+            <h3>Workflow first, not form first</h3>
+            <p>
+              Public services are rarely a single-step form. They are approval chains that cross departments, involve external partners, and include compliance checks. We map the real workflow before designing screens, so the system reflects how decisions are actually made, not how they are assumed to be made.
+            </p>
+            <p>
+              This includes explicit ownership at each handoff. If a permit approval requires review by planning, legal, and finance, the system should mirror that sequence and record who approved what and when. That structure protects the agency and gives citizens clear status updates.
+            </p>
+            <h3>Stakeholder alignment and procurement realities</h3>
+            <p>
+              Public delivery involves committees, procurement constraints, and evolving policy goals. We build alignment early by defining clear outcomes, measurable service levels, and decision rights. That prevents scope drift and keeps the program stable even when leadership changes.
+            </p>
+            <p>
+              A practical roadmap helps agencies sequence work into releases that match budget cycles. It also reduces risk by focusing first on the workflows with the highest public impact, then expanding into additional departments and service lines.
+            </p>
+            <h3>Data governance and privacy by design</h3>
+            <p>
+              Public sector data is sensitive and often shared across services. We align data models early, define retention rules, and build access controls that match job functions. This avoids accidental exposure and reduces the risk of data duplication that creates conflicting records.
+            </p>
+            <p>
+              We also design for audit readiness. Every decision, update, and exception should be traceable without requiring manual spreadsheets or email trails. When compliance questions appear months later, the system should already have the answers.
+            </p>
+            <h3>Interoperability with legacy systems</h3>
+            <p>
+              Many agencies rely on legacy platforms that cannot be replaced overnight. We plan integrations that respect existing constraints while gradually improving the data flow and user experience. This keeps critical services stable while new capabilities are introduced.
+            </p>
+            <p>
+              Interoperability also reduces duplication. When case data can move across departments without manual re-entry, service speed improves and error rates drop. We design those interfaces with clear ownership and validation so the data stays trustworthy.
+            </p>
+            <h3>Accessibility and trust for citizens</h3>
+            <p>
+              Accessibility is not a checkbox in the public sector. It is a core requirement. We design user interfaces that meet accessibility standards, keep language plain and clear, and support multilingual contexts when required. The goal is to make the service understandable to someone who has never used it before.
+            </p>
+            <p>
+              We also help agencies build transparency into the experience. That includes status tracking, notifications, and clear explanations of what happens next. Citizens should never have to call a hotline just to learn whether their request was received.
+            </p>
+            <p>
+              Digital services must also work across channels. We consider front-desk workflows, call center scripts, and assisted digital options so the same case data supports every interaction, not just the online form.
+            </p>
+            <h3>Operational visibility for departments</h3>
+            <p>
+              Internal teams need visibility into workload, aging cases, and bottlenecks. We build dashboards and reporting that show throughput, queue health, and service status at a glance. This makes it possible to reassign work, plan staffing, and respond to peak periods without losing accountability.
+            </p>
+            <p>
+              We also surface metrics that matter to leadership, such as backlog age, response times, and completion rates, so decisions can be based on evidence rather than anecdotes.
+            </p>
+            <p>
+              Long-term reliability also depends on a realistic release process. We plan for change management, training, and staged rollouts so the system can evolve without interrupting essential services.
+            </p>
+            <h3>Change management and continuity</h3>
+            <p>
+              Public systems are used by a wide range of teams, from front desk staff to back-office specialists. We create training plans, onboarding guides, and operational playbooks so that new staff can step in without losing service quality.
+            </p>
+            <p>
+              Continuity matters just as much as new features. When a policy update arrives, the system should be ready to adapt without forcing a full rebuild. We design for configuration, clear governance, and long-term stewardship.
+            </p>
+            <h3>What strong public sector delivery includes</h3>
             <ul>
-              <li>Design workflows that map to real departmental approvals</li>
-              <li>Prioritize accessibility, clarity, and transparency</li>
-              <li>Keep audit trails and service status visible</li>
+              <li>Case management workflows aligned to real approvals.</li>
+              <li>Accessible interfaces that prioritize clarity and trust.</li>
+              <li>Data governance with clear ownership and audit trails.</li>
+              <li>Dashboards that reveal service status and workload.</li>
+              <li>Documentation that supports long-term program continuity.</li>
             </ul>
+            <p>
+              Public sector delivery is about reliability, transparency, and stewardship. We approach it with the same rigor as industrial and fintech work, because the impact on citizens is just as real.
+            </p>
+            <p>
+              That focus keeps services dependable for the people who rely on them.
+            </p>
           </div>
           <img src="https://images.pexels.com/photos/13138090/pexels-photo-13138090.jpeg?cs=srgb&dl=pexels-laura-paredis-1047081-13138090.jpg&fm=jpg" alt="City hall exterior" />
         </article>
       </div>
     </section>
   </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="assets/logo.svg" alt="Pivot Softwares logo" />
+          <div>
+            <div class="footer-copy">Pivot Softwares delivers industrial software, fintech platforms, and public sector systems with full-cycle ownership.</div>
+            <div class="footer-contact">
+              <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>
+              <span>Brussels, Belgium</span>
+              <a href="https://www.linkedin.com/in/gihedannabi/" class="footer-social">LinkedIn</a>
+              <a href="https://cal.com/pivotsoftwares/discovery" class="footer-cta" data-cal-link="pivotsoftwares/discovery" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="footer-title">Company</div>
+        <ul class="footer-links">
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#why">Why Pivot</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="index.html#services">Services</a></li>
+          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html#engagement">Engagement</a></li>
+          <li><a href="index.html#tech">Technology Stack</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Sectors</div>
+        <ul class="footer-links">
+          <li><a href="sectors/industrial-manufacturing.html">Industrial software</a></li>
+          <li><a href="sectors/fintech.html">Fintech</a></li>
+          <li><a href="sectors/public-sector.html">Public sector</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-title">Legal</div>
+        <ul class="footer-links">
+          <li><a href="privacy.html">Privacy policy</a></li>
+          <li><a href="terms.html">Terms of service</a></li>
+          <li><a href="cookies.html">Cookie policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer-note">(c) 2026 Pivot Softwares. Professional IT consulting and software delivery.</div>
+  </footer>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie preferences">
+    <div class="cookie-content">
+      <div>
+        <strong>Cookie preferences</strong>
+        <p>We use essential cookies to keep the site secure and reliable. Optional analytics cookies help us improve the experience.</p>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieManage">Manage preferences</button>
+        <button class="btn btn-primary" type="button" id="cookieAccept">Accept all</button>
+      </div>
+    </div>
+    <div class="cookie-panel" id="cookiePanel" hidden>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label>Essential</label>
+          <span>Required for core site functionality.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" checked disabled />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-option">
+        <div class="cookie-text">
+          <label for="cookieAnalytics">Analytics</label>
+          <span>Helps us improve performance and content.</span>
+        </div>
+        <div class="cookie-switch">
+          <input type="checkbox" id="cookieAnalytics" />
+          <span class="cookie-slider"></span>
+        </div>
+      </div>
+      <div class="cookie-actions">
+        <button class="btn btn-secondary" type="button" id="cookieReject">Reject non-essential</button>
+        <button class="btn btn-primary" type="button" id="cookieSave">Save preferences</button>
+      </div>
+    </div>
+  </div>
 
   <script>
     const navbar = document.getElementById('navbar');
@@ -511,9 +954,73 @@
         });
       });
     }
+
+    const cookieBanner = document.getElementById('cookieBanner');
+    const cookiePanel = document.getElementById('cookiePanel');
+    const cookieManage = document.getElementById('cookieManage');
+    const cookieAccept = document.getElementById('cookieAccept');
+    const cookieSave = document.getElementById('cookieSave');
+    const cookieReject = document.getElementById('cookieReject');
+    const cookieAnalytics = document.getElementById('cookieAnalytics');
+
+    const getCookiePrefs = () => {
+      try {
+        return JSON.parse(localStorage.getItem('cookiePrefs'));
+      } catch (error) {
+        return null;
+      }
+    };
+
+    const saveCookiePrefs = (prefs) => {
+      if (!cookieBanner) return;
+      localStorage.setItem('cookiePrefs', JSON.stringify(prefs));
+      cookieBanner.classList.remove('visible');
+      if (cookiePanel) {
+        cookiePanel.hidden = true;
+      }
+    };
+
+    if (cookieBanner && !getCookiePrefs()) {
+      cookieBanner.classList.add('visible');
+    }
+
+    if (cookieManage && cookiePanel) {
+      cookieManage.addEventListener('click', () => {
+        cookiePanel.hidden = !cookiePanel.hidden;
+      });
+    }
+
+    if (cookieAccept) {
+      cookieAccept.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = true;
+        }
+        saveCookiePrefs({ essential: true, analytics: true });
+      });
+    }
+
+    if (cookieReject) {
+      cookieReject.addEventListener('click', () => {
+        if (cookieAnalytics) {
+          cookieAnalytics.checked = false;
+        }
+        saveCookiePrefs({ essential: true, analytics: false });
+      });
+    }
+
+    if (cookieSave) {
+      cookieSave.addEventListener('click', () => {
+        saveCookiePrefs({
+          essential: true,
+          analytics: cookieAnalytics ? cookieAnalytics.checked : false
+        });
+      });
+    }
   </script>
 </body>
 </html>
+
+
 
 
 
