@@ -15,37 +15,52 @@
   <style>
     :root {
       --bg: #f7f8fb;
+      --bg-soft: #eef2f7;
       --bg-card: #ffffff;
       --text: #0b1220;
       --muted: #5b6475;
       --line: #e4e9f2;
+      --line-strong: #cfd8e6;
+      --primary: #1f5fbf;
+      --primary-dark: #143e8a;
+      --accent: #0f766e;
       --navy: #0b1324;
       --shadow: 0 22px 56px rgba(11, 18, 32, 0.12);
+      --radius-xl: 30px;
       --radius-lg: 22px;
-      --container: 980px;
+      --radius-md: 14px;
+      --container: 1180px;
       --headline: 'Newsreader', serif;
       --body: 'Manrope', sans-serif;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
       font-family: var(--body);
       background: var(--bg);
       color: var(--text);
-      line-height: 1.7;
+      line-height: 1.6;
+      overflow-x: hidden;
     }
+    img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
     .container { width: min(var(--container), calc(100% - 48px)); margin: 0 auto; }
 
     .topbar {
-      position: sticky;
-      top: 0;
+      position: fixed;
+      inset: 0 0 auto 0;
       z-index: 1000;
-      background: rgba(255,255,255,0.96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(10px);
+      transition: 0.25s ease;
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+    }
+    .topbar.scrolled {
+      border-bottom-color: rgba(15,23,42,0.08);
+      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
     }
     .nav {
-      min-height: 76px;
+      min-height: 82px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -55,173 +70,84 @@
       display: flex;
       align-items: center;
       gap: 14px;
+      text-decoration: none;
+      min-width: 0;
     }
-        .brand img {
-      height: 46px;
-      width: auto;
-      object-fit: contain;
-    }
-
-.brand-name {
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      font-size: 15px;
-      color: var(--navy);
-    }
+    .brand img { height: 46px; width: auto; object-fit: contain; }
+    .brand-text { display: flex; flex-direction: column; gap: 2px; }
+    .brand-name { font-weight: 700; letter-spacing: -0.02em; font-size: 15px; color: var(--navy); }
     .brand-tag { font-size: 12px; color: var(--muted); }
-    .nav-links { display: flex; gap: 18px; list-style: none; }
-    .nav-links a { font-size: 14px; color: #334155; font-weight: 500; }
 
-    main { padding: 60px 0 80px; }
-    h1 {
-      font-family: var(--headline);
-      font-size: clamp(38px, 5vw, 52px);
-      margin-bottom: 10px;
-      color: var(--navy);
+    .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+    .nav-links a { text-decoration: none; color: #334155; font-size: 14px; font-weight: 500; }
+    .nav-links a:hover { color: var(--primary-dark); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after {
+      content: ""; width: 8px; height: 8px;
+      border-right: 2px solid #334155; border-bottom: 2px solid #334155;
+      transform: rotate(45deg); display: inline-block; margin-left: 8px; margin-bottom: 2px;
     }
-    h2 {
-      font-family: var(--headline);
-      font-size: 26px;
-      margin: 28px 0 10px;
-      color: var(--navy);
+    .dropdown-panel {
+      position: absolute; top: calc(100% + 12px); left: 0; min-width: 240px;
+      background: #fff; border: 1px solid var(--line); border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(11, 18, 32, 0.12); padding: 12px;
+      opacity: 0; visibility: hidden; transform: translateY(6px); transition: 0.2s ease;
     }
-    p { color: var(--muted); margin-bottom: 12px; }
-    ul { margin: 10px 0 16px 18px; color: var(--muted); }
-    li { margin-bottom: 6px; }
+    .dropdown-panel a { display: block; padding: 10px 12px; border-radius: 12px; font-size: 14px; color: #1e293b; font-weight: 500; }
+    .dropdown-panel a:hover { background: #f4f7fb; color: var(--primary-dark); }
+    .nav-dropdown:hover .dropdown-panel,
+    .nav-dropdown:focus-within .dropdown-panel { opacity: 1; visibility: visible; transform: translateY(0); }
+
+    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    .nav-menu { display: flex; align-items: center; gap: 24px; }
+    .nav-toggle {
+      display: none; background: #fff; border: 1px solid var(--line);
+      border-radius: 12px; padding: 10px 12px; cursor: pointer;
+      box-shadow: 0 10px 24px rgba(11, 18, 32, 0.08);
+    }
+    .nav-toggle span { display: block; width: 20px; height: 2px; background: #1e293b; border-radius: 999px; }
+    .nav-toggle span + span { margin-top: 5px; }
+
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      border-radius: 999px; text-decoration: none; font-weight: 600;
+      transition: 0.2s ease; cursor: pointer; border: 1px solid transparent; white-space: nowrap;
+    }
+    .btn-primary { background: var(--primary); color: #fff; padding: 14px 22px; box-shadow: 0 16px 32px rgba(31,95,191,0.2); }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
+    .btn-secondary { background: #fff; color: var(--text); border-color: var(--line-strong); padding: 14px 22px; }
+    .btn-secondary:hover { border-color: var(--primary); color: var(--primary-dark); }
+
+    main { padding: 140px 0 80px; }
 
     .policy-card {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: var(--radius-lg);
-      padding: 32px;
-      box-shadow: var(--shadow);
+      padding: 42px;
+      box-shadow: 0 10px 26px rgba(11, 18, 32, 0.06);
+      max-width: 820px;
+      margin: 0 auto;
     }
-    .policy-meta { color: var(--muted); font-size: 14px; margin-bottom: 12px; }
-  
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
+    .policy-card h1 {
+      font-family: var(--headline);
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.05;
+      color: var(--navy);
+      margin-bottom: 8px;
     }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 28px;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    .policy-meta { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+    .policy-card h2 {
+      font-family: var(--headline);
+      font-size: 22px;
+      margin: 32px 0 10px;
+      color: var(--navy);
     }
-    .nav-links a {
-      text-decoration: none;
-      color: #334155;
-      font-size: 14px;
-      font-weight: 500;
-    }
-    .nav-links a:hover { color: var(--primary-dark); }
-    .nav-dropdown { position: relative; }
-    .nav-dropdown > a::after {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-right: 2px solid #334155;
-      border-bottom: 2px solid #334155;
-      transform: rotate(45deg);
-      display: inline-block;
-      margin-left: 8px;
-      margin-bottom: 2px;
-    }
-    .dropdown-panel {
-      position: absolute;
-      top: calc(100% + 12px);
-      left: 0;
-      min-width: 240px;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 16px;
-      box-shadow: 0 18px 40px rgba(11, 18, 32, 0.12);
-      padding: 12px;
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(6px);
-      transition: 0.2s ease;
-    }
-    .dropdown-panel a {
-      display: block;
-      padding: 10px 12px;
-      border-radius: 12px;
-      font-size: 14px;
-      color: #1e293b;
-      font-weight: 500;
-    }
-    .dropdown-panel a:hover {
-      background: #f4f7fb;
-      color: var(--primary-dark);
-    }
-    .nav-dropdown:hover .dropdown-panel,
-    .nav-dropdown:focus-within .dropdown-panel {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-    .nav-menu {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .nav-toggle {
-      display: none;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 12px;
-      padding: 10px 12px;
-      cursor: pointer;
-      box-shadow: 0 10px 24px rgba(11, 18, 32, 0.08);
-    }
-    .nav-toggle span {
-      display: block;
-      width: 20px;
-      height: 2px;
-      background: #1e293b;
-      border-radius: 999px;
-    }
-    .nav-toggle span + span { margin-top: 5px; }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border-radius: 999px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.2s ease;
-      cursor: pointer;
-      border: 1px solid transparent;
-      white-space: nowrap;
-    }
-    .btn-primary {
-      background: var(--primary);
-      color: #fff;
-      padding: 14px 22px;
-      box-shadow: 0 16px 32px rgba(31,95,191,0.2);
-    }
-    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-    .btn-secondary {
-      background: #fff;
-      color: var(--text);
-      border-color: var(--line);
-      padding: 12px 18px;
-    }
-
-    .topbar.scrolled {
-      box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
-      border-bottom-color: rgba(15,23,42,0.08);
-    }
+    .policy-card p { color: var(--muted); font-size: 15px; margin-bottom: 14px; line-height: 1.7; }
+    .policy-card ul { margin: 10px 0 18px 22px; color: var(--muted); }
+    .policy-card li { margin-bottom: 8px; font-size: 15px; line-height: 1.7; }
+    .policy-card a { color: var(--primary-dark); font-weight: 500; }
+    .policy-card a:hover { text-decoration: underline; }
 
     footer {
       padding: 26px 0 42px;
@@ -234,217 +160,45 @@
       gap: 24px;
       align-items: start;
     }
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      min-width: 0;
-    }
-    .footer-brand img {
-      height: 38px;
-      width: auto;
-    }
-    .footer-copy {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .footer-contact {
-      display: grid;
-      gap: 8px;
-      margin-top: 14px;
-    }
-    .footer-contact a {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .footer-contact span {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .footer-social {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      color: var(--primary-dark);
-    }
-    .footer-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-weight: 600;
-      color: var(--primary-dark);
-    }
-    .footer-title {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: var(--primary-dark);
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-    .footer-links {
-      list-style: none;
-      display: grid;
-      gap: 8px;
-    }
-    .footer-links a {
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .footer-note {
-      color: var(--muted);
-      font-size: 14px;
-      margin-top: 18px;
-    }
-
-    .cookie-banner {
-      position: fixed;
-      left: 20px;
-      right: 20px;
-      bottom: 20px;
-      z-index: 9999;
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: 18px;
-      padding: 18px;
-      box-shadow: 0 20px 50px rgba(11, 18, 32, 0.2);
-      display: none;
-    }
-    .cookie-banner.visible { display: block; }
-    .cookie-content {
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      align-items: center;
-    }
-    .cookie-content strong {
-      color: var(--navy);
-      display: block;
-      margin-bottom: 6px;
-    }
-    .cookie-content p {
-      color: var(--muted);
-      font-size: 14px;
-      max-width: 520px;
-    }
-    .cookie-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .cookie-panel {
-      margin-top: 14px;
-      padding-top: 14px;
-      border-top: 1px solid var(--line);
-      display: grid;
-      gap: 12px;
-    }
-    .cookie-option {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-      color: var(--muted);
-    }
-    .cookie-option .cookie-text {
-      display: grid;
-      gap: 4px;
-    }
-    .cookie-option label {
-      color: var(--navy);
-      font-weight: 600;
-    }
-    .cookie-switch {
-      position: relative;
-      width: 44px;
-      height: 24px;
-      flex-shrink: 0;
-    }
-    .cookie-switch input {
-      opacity: 0;
-      width: 0;
-      height: 0;
-    }
-    .cookie-slider {
-      position: absolute;
-      inset: 0;
-      background: #cbd5f0;
-      border-radius: 999px;
-      transition: 0.2s ease;
-    }
-    .cookie-slider::before {
-      content: "";
-      position: absolute;
-      height: 18px;
-      width: 18px;
-      left: 3px;
-      top: 3px;
-      background: #fff;
-      border-radius: 50%;
-      transition: 0.2s ease;
-    }
-    .cookie-switch input:checked + .cookie-slider {
-      background: var(--primary);
-    }
-    .cookie-switch input:checked + .cookie-slider::before {
-      transform: translateX(20px);
-    }
-    .cookie-switch input:disabled + .cookie-slider {
-      background: #94a3b8;
-      cursor: not-allowed;
-    }
+    .footer-brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .footer-brand img { height: 38px; width: auto; }
+    .footer-copy { color: var(--muted); font-size: 14px; }
+    .footer-contact { display: grid; gap: 8px; margin-top: 14px; }
+    .footer-contact a { color: var(--muted); font-size: 14px; }
+    .footer-contact span { color: var(--muted); font-size: 14px; }
+    .footer-social { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--primary-dark) !important; }
+    .footer-cta { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; color: var(--primary-dark) !important; }
+    .footer-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--primary-dark); margin-bottom: 10px; font-weight: 700; }
+    .footer-links { list-style: none; display: grid; gap: 8px; }
+    .footer-links a { color: var(--muted); font-size: 14px; }
+    .footer-note { color: var(--muted); font-size: 14px; margin-top: 18px; }
 
     @media (max-width: 980px) {
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 780px) {
       .nav { min-height: 76px; }
-      .cookie-content { flex-direction: column; align-items: flex-start; }
       .nav-toggle { display: inline-flex; margin-left: auto; }
       .nav-menu {
-        position: fixed;
-        top: 76px;
-        left: 16px;
-        right: 16px;
-        background: #fff;
-        border: 1px solid var(--line);
-        border-radius: 18px;
-        padding: 18px;
-        box-shadow: 0 18px 40px rgba(11, 18, 32, 0.16);
-        display: none;
-        flex-direction: column;
-        gap: 16px;
-        z-index: 999;
+        position: fixed; top: 76px; left: 16px; right: 16px;
+        background: #fff; border: 1px solid var(--line); border-radius: 18px;
+        padding: 18px; box-shadow: 0 18px 40px rgba(11, 18, 32, 0.16);
+        display: none; flex-direction: column; gap: 16px; z-index: 999;
       }
       .nav-menu.open { display: flex; }
-      .nav-links {
-        width: 100%;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 14px;
-      }
+      .nav-links { width: 100%; flex-direction: column; align-items: flex-start; gap: 14px; }
       .nav-actions { width: 100%; flex-direction: column; }
       .nav-actions .btn { width: 100%; }
       .footer-grid { grid-template-columns: 1fr; }
-      .dropdown-panel {
-        position: static;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
-        box-shadow: none;
-        border: 0;
-        padding: 8px 0 0 12px;
-      }
+      .dropdown-panel { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; border: 0; padding: 8px 0 0 12px; }
       .nav-dropdown > a::after { display: none; }
+      main { padding: 120px 0 60px; }
+      .policy-card { padding: 24px; }
     }
   </style>
 </head>
 <body>
-    <header class="topbar" id="navbar">
+  <header class="topbar" id="navbar">
     <div class="container nav">
       <a class="brand" href="index.html">
         <img src="assets/logo.svg" alt="Pivot Softwares logo" />
@@ -479,7 +233,6 @@
           <li><a href="insights.html">Insights</a></li>
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
-
         <div class="nav-actions">
           <a href="https://cal.eu/pivotsoftwares" class="btn btn-primary" data-cal-link="pivotsoftwares" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
         </div>
@@ -488,33 +241,35 @@
   </header>
 
   <main>
-    <div class="container policy-card">
-      <h1>Terms of Service</h1>
-      <div class="policy-meta">Last updated: March 13, 2026</div>
+    <div class="container">
+      <div class="policy-card">
+        <h1>Terms of Service</h1>
+        <div class="policy-meta">Last updated: March 13, 2026</div>
 
-      <p>These terms provide a general overview of the relationship between Pivot Softwares and our clients. Project-specific contracts take precedence over this summary.</p>
+        <p>These terms provide a general overview of the relationship between Pivot Softwares and our clients. Project-specific contracts take precedence over this summary.</p>
 
-      <h2>Services</h2>
-      <p>We provide software consulting, delivery, and related services as described in proposals, statements of work, or contracts.</p>
+        <h2>Services</h2>
+        <p>We provide software consulting, delivery, and related services as described in proposals, statements of work, or contracts.</p>
 
-      <h2>Client responsibilities</h2>
-      <ul>
-        <li>Provide timely access to required information, systems, and stakeholders.</li>
-        <li>Designate decision-makers for scope, approvals, and delivery priorities.</li>
-        <li>Review and approve deliverables within agreed timelines.</li>
-      </ul>
+        <h2>Client responsibilities</h2>
+        <ul>
+          <li>Provide timely access to required information, systems, and stakeholders.</li>
+          <li>Designate decision-makers for scope, approvals, and delivery priorities.</li>
+          <li>Review and approve deliverables within agreed timelines.</li>
+        </ul>
 
-      <h2>Intellectual property</h2>
-      <p>Ownership and licensing of deliverables are defined in project agreements. Unless otherwise stated, pre-existing intellectual property remains with its owner.</p>
+        <h2>Intellectual property</h2>
+        <p>Ownership and licensing of deliverables are defined in project agreements. Unless otherwise stated, pre-existing intellectual property remains with its owner.</p>
 
-      <h2>Confidentiality</h2>
-      <p>Both parties agree to protect confidential information shared during the engagement and to use it only for project delivery purposes.</p>
+        <h2>Confidentiality</h2>
+        <p>Both parties agree to protect confidential information shared during the engagement and to use it only for project delivery purposes.</p>
 
-      <h2>Liability</h2>
-      <p>Liability limitations, warranties, and indemnities are governed by project-specific contracts.</p>
+        <h2>Liability</h2>
+        <p>Liability limitations, warranties, and indemnities are governed by project-specific contracts.</p>
 
-      <h2>Contact</h2>
-      <p>For contractual questions, contact <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>.</p>
+        <h2>Contact</h2>
+        <p>For contractual questions, contact <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>.</p>
+      </div>
     </div>
   </main>
 
@@ -528,7 +283,7 @@
             <div class="footer-contact">
               <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>
               <span>Brussels, Belgium</span>
-              <a href="https://www.linkedin.com/in/gihedannabi/" class="footer-social">LinkedIn</a>
+              <a href="https://www.linkedin.com/company/pivot-softwares" class="footer-social">LinkedIn</a>
               <a href="https://cal.eu/pivotsoftwares" class="footer-cta" data-cal-link="pivotsoftwares" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
             </div>
           </div>
@@ -569,145 +324,25 @@
         </ul>
       </div>
     </div>
-    <div class="container footer-note">(c) 2026 Pivot Softwares. Professional IT consulting and software delivery.</div>
+    <div class="container footer-note">&copy; 2026 Pivot Softwares. Professional IT consulting and software delivery.</div>
   </footer>
-
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie preferences">
-    <div class="cookie-content">
-      <div>
-        <strong>Cookie preferences</strong>
-        <p>We use essential cookies to keep the site secure and reliable. Optional analytics cookies help us improve the experience.</p>
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-secondary" type="button" id="cookieManage">Manage preferences</button>
-        <button class="btn btn-primary" type="button" id="cookieAccept">Accept all</button>
-      </div>
-    </div>
-    <div class="cookie-panel" id="cookiePanel" hidden>
-      <div class="cookie-option">
-        <div class="cookie-text">
-          <label>Essential</label>
-          <span>Required for core site functionality.</span>
-        </div>
-        <div class="cookie-switch">
-          <input type="checkbox" checked disabled />
-          <span class="cookie-slider"></span>
-        </div>
-      </div>
-      <div class="cookie-option">
-        <div class="cookie-text">
-          <label for="cookieAnalytics">Analytics</label>
-          <span>Helps us improve performance and content.</span>
-        </div>
-        <div class="cookie-switch">
-          <input type="checkbox" id="cookieAnalytics" />
-          <span class="cookie-slider"></span>
-        </div>
-      </div>
-      <div class="cookie-actions">
-        <button class="btn btn-secondary" type="button" id="cookieReject">Reject non-essential</button>
-        <button class="btn btn-primary" type="button" id="cookieSave">Save preferences</button>
-      </div>
-    </div>
-  </div>
 
   <script>
     const navbar = document.getElementById('navbar');
     const navToggle = document.querySelector('.nav-toggle');
     const navMenu = document.getElementById('navMenu');
-
-    const onScroll = () => {
-      if (navbar) {
-        navbar.classList.toggle('scrolled', window.scrollY > 12);
-      }
-    };
+    const onScroll = () => { if (navbar) navbar.classList.toggle('scrolled', window.scrollY > 12); };
     onScroll();
     window.addEventListener('scroll', onScroll);
-
     if (navToggle && navMenu) {
       navToggle.addEventListener('click', () => {
         const isOpen = navMenu.classList.toggle('open');
         navToggle.setAttribute('aria-expanded', isOpen);
       });
       navMenu.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          navMenu.classList.remove('open');
-          navToggle.setAttribute('aria-expanded', 'false');
-        });
-      });
-    }
-
-    const cookieBanner = document.getElementById('cookieBanner');
-    const cookiePanel = document.getElementById('cookiePanel');
-    const cookieManage = document.getElementById('cookieManage');
-    const cookieAccept = document.getElementById('cookieAccept');
-    const cookieSave = document.getElementById('cookieSave');
-    const cookieReject = document.getElementById('cookieReject');
-    const cookieAnalytics = document.getElementById('cookieAnalytics');
-
-    const getCookiePrefs = () => {
-      try {
-        return JSON.parse(localStorage.getItem('cookiePrefs'));
-      } catch (error) {
-        return null;
-      }
-    };
-
-    const saveCookiePrefs = (prefs) => {
-      if (!cookieBanner) return;
-      localStorage.setItem('cookiePrefs', JSON.stringify(prefs));
-      cookieBanner.classList.remove('visible');
-      if (cookiePanel) {
-        cookiePanel.hidden = true;
-      }
-    };
-
-    if (cookieBanner && !getCookiePrefs()) {
-      cookieBanner.classList.add('visible');
-    }
-
-    if (cookieManage && cookiePanel) {
-      cookieManage.addEventListener('click', () => {
-        cookiePanel.hidden = !cookiePanel.hidden;
-      });
-    }
-
-    if (cookieAccept) {
-      cookieAccept.addEventListener('click', () => {
-        if (cookieAnalytics) {
-          cookieAnalytics.checked = true;
-        }
-        saveCookiePrefs({ essential: true, analytics: true });
-      });
-    }
-
-    if (cookieReject) {
-      cookieReject.addEventListener('click', () => {
-        if (cookieAnalytics) {
-          cookieAnalytics.checked = false;
-        }
-        saveCookiePrefs({ essential: true, analytics: false });
-      });
-    }
-
-    if (cookieSave) {
-      cookieSave.addEventListener('click', () => {
-        saveCookiePrefs({
-          essential: true,
-          analytics: cookieAnalytics ? cookieAnalytics.checked : false
-        });
+        link.addEventListener('click', () => { navMenu.classList.remove('open'); navToggle.setAttribute('aria-expanded', 'false'); });
       });
     }
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
