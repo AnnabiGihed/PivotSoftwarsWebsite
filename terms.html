@@ -73,7 +73,10 @@
       text-decoration: none;
       min-width: 0;
     }
-    .brand img { height: 46px; width: auto; object-fit: contain; }
+    .brand img { 
+      height: 56px;
+      width: auto;
+    }
     .brand-text { display: flex; flex-direction: column; gap: 2px; }
     .brand-name { font-weight: 700; letter-spacing: -0.02em; font-size: 15px; color: var(--navy); }
     .brand-tag { font-size: 12px; color: var(--muted); }
@@ -156,12 +159,15 @@
     }
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.3fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1.6fr 0.85fr 0.85fr 0.85fr 0.85fr;
       gap: 24px;
       align-items: start;
     }
     .footer-brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
-    .footer-brand img { height: 38px; width: auto; }
+    .footer-brand img {
+      height: 128px;
+      width: auto;
+    }
     .footer-copy { color: var(--muted); font-size: 14px; }
     .footer-contact { display: grid; gap: 8px; margin-top: 14px; }
     .footer-contact a { color: var(--muted); font-size: 14px; }
