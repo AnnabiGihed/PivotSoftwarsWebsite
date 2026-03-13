@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/favicon.ico" sizes="48x48" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <title>Pivot Softwares - Professional IT Consulting</title>
   <meta name="description" content="Pivot Softwares builds industrial software, fintech platforms, and public sector systems with full-cycle delivery, architecture, and long-term support." />
   <link rel="canonical" href="https://pivotsoftwares.com/" />
@@ -10,12 +13,12 @@
   <meta property="og:description" content="Industrial software, fintech platforms, and public sector systems delivered with clear ownership and long-term support." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://pivotsoftwares.com/" />
-  <meta property="og:image" content="https://images.pexels.com/photos/7097290/pexels-photo-7097290.jpeg?cs=srgb&dl=pexels-optlasers-7097290.jpg&fm=jpg" />
+  <meta property="og:image" content="assets/images/industrial-hero.jpg" />
   <meta property="og:locale" content="en_US" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Pivot Softwares - Industrial, Fintech, and Public Sector Software" />
   <meta name="twitter:description" content="Industrial software, fintech platforms, and public sector systems delivered with clear ownership and long-term support." />
-  <meta name="twitter:image" content="https://images.pexels.com/photos/7097290/pexels-photo-7097290.jpeg?cs=srgb&dl=pexels-optlasers-7097290.jpg&fm=jpg" />
+  <meta name="twitter:image" content="assets/images/industrial-hero.jpg" />
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -71,6 +74,55 @@
       --body: 'Manrope', sans-serif;
     }
 
+    .floating-cta {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 990;
+      opacity: 0;
+      transform: translateY(16px);
+      pointer-events: none;
+      transition: 0.35s ease;
+    }
+    .floating-cta.visible {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: all;
+    }
+    .floating-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: #fff;
+      padding: 16px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      box-shadow: 0 16px 40px rgba(31,95,191,0.35);
+      transition: 0.2s ease;
+    }
+    .floating-cta a:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 48px rgba(31,95,191,0.4);
+    }
+    .floating-cta svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    .hero-sub {
+      font-size: 20px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-bottom: 8px;
+      letter-spacing: -0.01em;
+    }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -1550,7 +1602,8 @@
           <div class="reveal">
             <div class="eyebrow">Business-critical software delivery</div>
 
-            <h1>Industrial software. Fintech platforms. Public systems. Delivered reliably.</h1>
+              <h1>Software delivery for systems that <span>can't go down.</span></h1>
+              <p class="hero-sub">Industrial platforms. Fintech operations. Public services. Delivered reliably from Brussels.</p>
 
             <p class="lead">
               Pivot Softwares delivers industrial software, fintech platforms, and public systems that must stay dependable under pressure. We own delivery from architecture through support so your teams operate with confidence.
@@ -1590,7 +1643,7 @@
               </div>
               <div class="case-item">
                 <span>Outcome</span>
-                <strong>Faster diagnostics, reliable handoffs, and clear audit trails.</strong>
+                  <strong>60% faster diagnostics, reliable handoffs, and clear audit trails across sites.</strong>
               </div>
             </div>
 
@@ -1710,7 +1763,7 @@
             </div>
           </div>
           <div class="sector-media">
-            <img src="https://images.pexels.com/photos/7097290/pexels-photo-7097290.jpeg?cs=srgb&dl=pexels-optlasers-7097290.jpg&fm=jpg" alt="Industrial engraving machine in operation" />
+            <img src="assets/images/industrial-hero.jpg" alt="Industrial engraving machine in operation" />
             <strong>Operational reliability</strong>
             <span>Control layers and monitoring that keep equipment running.</span>
           </div>
@@ -1732,7 +1785,7 @@
             </div>
           </div>
           <div class="sector-media">
-            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80" alt="Fintech operations dashboard" />
+            <img src="assets/images/fintech-hero.jpg" alt="Fintech operations dashboard" />
             <strong>Trust and compliance</strong>
             <span>Audit-ready flows and operational controls.</span>
           </div>
@@ -1752,7 +1805,7 @@
             </div>
           </div>
           <div class="sector-media">
-            <img src="https://images.pexels.com/photos/13138090/pexels-photo-13138090.jpeg?cs=srgb&dl=pexels-laura-paredis-1047081-13138090.jpg&fm=jpg" alt="City hall exterior" />
+            <img src="assets/images/public-sector-hero.jpg" alt="City hall exterior" />
             <strong>Public impact</strong>
             <span>Reliable services for citizens and internal teams.</span>
           </div>
@@ -2174,7 +2227,10 @@
             </div>
             <div class="contact-detail">
               <span class="label">LinkedIn</span>
-              <span class="value"><a href="https://www.linkedin.com/in/gihedannabi/">Gihed Annabi</a></span>
+              <span class="value">
+                <a href="https://www.linkedin.com/company/pivot-softwares">Pivot Softwares</a> · 
+                <a href="https://www.linkedin.com/in/gihedannabi/">Gihed Annabi</a>
+              </span>
             </div>
           </div>
         </div>
@@ -2192,7 +2248,8 @@
             <div class="footer-contact">
               <a href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>
               <span>Brussels, Belgium</span>
-              <a href="https://www.linkedin.com/company/pivot-softwares" class="footer-social">LinkedIn</a>
+              <a href="https://www.linkedin.com/company/pivot-softwares" class="footer-social">LinkedIn (Company)</a>
+              <a href="https://www.linkedin.com/in/gihedannabi/" class="footer-social">LinkedIn (Founder)</a>
               <a href="https://cal.eu/pivotsoftwares" class="footer-cta" data-cal-link="pivotsoftwares" data-cal-config='{"layout":"month_view"}'>Book a Discovery Call</a>
             </div>
           </div>
@@ -2372,6 +2429,27 @@
         });
       });
     }
+
+    const floatingCta = document.getElementById('floatingCta');
+    if (floatingCta) {
+      const heroSection = document.getElementById('home');
+      const contactSection = document.getElementById('contact');
+      const checkFloat = () => {
+        const heroBottom = heroSection ? heroSection.getBoundingClientRect().bottom : 0;
+        const contactTop = contactSection ? contactSection.getBoundingClientRect().top : Infinity;
+        const show = heroBottom < 0 && contactTop > window.innerHeight;
+        floatingCta.classList.toggle('visible', show);
+      };
+      checkFloat();
+      window.addEventListener('scroll', checkFloat, { passive: true });
+    }
   </script>
+
+  <div class="floating-cta" id="floatingCta">
+  <a href="https://cal.eu/pivotsoftwares" data-cal-link="pivotsoftwares" data-cal-config='{"layout":"month_view"}'>
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Book a Discovery Call
+  </a>
+</div>
 </body>
 </html>
