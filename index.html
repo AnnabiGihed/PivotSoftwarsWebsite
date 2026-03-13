@@ -3,34 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pivot Softwares — Professional IT Consulting</title>
+  <title>Pivot Softwares - Professional IT Consulting</title>
   <meta name="description" content="Pivot Softwares builds web, mobile, desktop, and cloud solutions with full-cycle delivery, architecture, DevOps, and long-term support." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #ffffff;
-      --bg-soft: #f7f9fc;
+      --bg: #f7f8fb;
+      --bg-soft: #eef2f7;
       --bg-card: #ffffff;
-      --text: #0f172a;
+      --text: #0b1220;
       --muted: #5b6475;
-      --line: #e5eaf2;
-      --line-strong: #d6deea;
-      --primary: #2d7dd2;
-      --primary-dark: #195ea6;
-      --navy: #07112a;
-      --shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
-      --radius-xl: 28px;
-      --radius-lg: 20px;
+      --line: #e4e9f2;
+      --line-strong: #cfd8e6;
+      --primary: #1f5fbf;
+      --primary-dark: #143e8a;
+      --accent: #0f766e;
+      --navy: #0b1324;
+      --shadow: 0 22px 56px rgba(11, 18, 32, 0.12);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
       --radius-md: 14px;
       --container: 1180px;
+      --headline: 'Newsreader', serif;
+      --body: 'Manrope', sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', sans-serif;
+      font-family: var(--body);
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
@@ -38,7 +41,7 @@
     }
 
     img { max-width: 100%; display: block; }
-    a { color: inherit; }
+    a { color: inherit; text-decoration: none; }
     .container { width: min(var(--container), calc(100% - 48px)); margin: 0 auto; }
 
     ::-webkit-scrollbar { width: 10px; }
@@ -106,6 +109,51 @@
       font-weight: 500;
     }
     .nav-links a:hover { color: var(--primary-dark); }
+    .nav-dropdown { position: relative; }
+    .nav-dropdown > a::after {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-right: 2px solid #334155;
+      border-bottom: 2px solid #334155;
+      transform: rotate(45deg);
+      display: inline-block;
+      margin-left: 8px;
+      margin-bottom: 2px;
+    }
+    .dropdown-panel {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      min-width: 240px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      box-shadow: 0 18px 40px rgba(11, 18, 32, 0.12);
+      padding: 12px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: 0.2s ease;
+    }
+    .dropdown-panel a {
+      display: block;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 14px;
+      color: #1e293b;
+      font-weight: 500;
+    }
+    .dropdown-panel a:hover {
+      background: #f4f7fb;
+      color: var(--primary-dark);
+    }
+    .nav-dropdown:hover .dropdown-panel,
+    .nav-dropdown:focus-within .dropdown-panel {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
 
     .nav-actions {
       display: flex;
@@ -130,14 +178,14 @@
       background: var(--primary);
       color: #fff;
       padding: 14px 22px;
-      box-shadow: 0 14px 30px rgba(45,125,210,0.18);
+      box-shadow: 0 16px 32px rgba(31,95,191,0.2);
     }
     .btn-primary:hover {
       background: var(--primary-dark);
       transform: translateY(-1px);
     }
     .btn-secondary {
-      background: #fff;
+      background: rgba(255,255,255,0.92);
       color: var(--text);
       border-color: var(--line-strong);
       padding: 14px 22px;
@@ -149,10 +197,11 @@
 
     .hero {
       position: relative;
-      padding: 152px 0 88px;
+      padding: 156px 0 96px;
       background:
-        radial-gradient(circle at top right, rgba(45,125,210,0.12), transparent 32%),
-        linear-gradient(180deg, #ffffff 0%, #f8fbff 58%, #ffffff 100%);
+        radial-gradient(circle at 15% 20%, rgba(31,95,191,0.14), transparent 45%),
+        radial-gradient(circle at 85% 15%, rgba(15,118,110,0.12), transparent 40%),
+        linear-gradient(180deg, #ffffff 0%, #f5f7fb 62%, #ffffff 100%);
       overflow: hidden;
     }
     .hero::before {
@@ -160,10 +209,21 @@
       position: absolute;
       inset: 0;
       background-image:
-        linear-gradient(rgba(45,125,210,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(45,125,210,0.04) 1px, transparent 1px);
+        linear-gradient(rgba(31,95,191,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(31,95,191,0.05) 1px, transparent 1px);
       background-size: 72px 72px;
       mask-image: linear-gradient(to bottom, rgba(0,0,0,0.55), transparent 78%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -160px;
+      bottom: -220px;
+      width: 420px;
+      height: 420px;
+      background: radial-gradient(circle, rgba(31,95,191,0.16), transparent 65%);
+      filter: blur(2px);
       pointer-events: none;
     }
     .hero-grid {
@@ -178,8 +238,8 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      font-size: 12px;
-      letter-spacing: 0.18em;
+      font-size: 11px;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--primary-dark);
       font-weight: 700;
@@ -193,7 +253,7 @@
       background: var(--primary);
     }
     .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--headline);
       font-size: clamp(54px, 7vw, 84px);
       line-height: 0.95;
       letter-spacing: -0.03em;
@@ -213,6 +273,11 @@
       flex-wrap: wrap;
       margin-bottom: 34px;
     }
+    .hero-meta {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
     .hero-points {
       display: flex;
       flex-wrap: wrap;
@@ -220,21 +285,21 @@
     }
     .hero-points span {
       padding: 10px 14px;
-      background: rgba(255,255,255,0.86);
+      background: rgba(255,255,255,0.9);
       border: 1px solid var(--line);
       border-radius: 999px;
       color: #334155;
       font-size: 14px;
       font-weight: 500;
-      box-shadow: 0 8px 20px rgba(15,23,42,0.04);
+      box-shadow: 0 8px 20px rgba(11,18,32,0.05);
     }
 
     .hero-card {
-      background: rgba(255,255,255,0.9);
-      border: 1px solid rgba(214,222,234,0.9);
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(207,216,230,0.95);
       box-shadow: var(--shadow);
       border-radius: var(--radius-xl);
-      padding: 28px;
+      padding: 30px;
       position: relative;
     }
     .hero-card::after {
@@ -255,7 +320,7 @@
     }
     .hero-card .badge {
       padding: 8px 12px;
-      background: #eef5fd;
+      background: #e9f1fb;
       color: var(--primary-dark);
       border-radius: 999px;
       font-size: 12px;
@@ -296,6 +361,39 @@
       font-size: 14px;
     }
 
+    .timeline {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 12px;
+      align-items: start;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .timeline-item span {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(31,95,191,0.12);
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .timeline-item span::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--primary);
+    }
+
     .trust-bar {
       padding: 18px 0 0;
     }
@@ -303,16 +401,23 @@
       border-top: 1px solid var(--line);
       padding-top: 22px;
       display: flex;
-      gap: 28px;
+      gap: 12px;
       flex-wrap: wrap;
       align-items: center;
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13px;
     }
-    .trust-wrap strong {
-      color: var(--navy);
-      font-weight: 700;
+    .trust-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      box-shadow: 0 8px 18px rgba(11,18,32,0.05);
     }
+    .trust-chip strong { color: var(--navy); font-weight: 700; }
 
     section {
       padding: 96px 0;
@@ -341,7 +446,7 @@
       background: var(--primary);
     }
     .section-title {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--headline);
       font-size: clamp(40px, 5vw, 62px);
       line-height: 0.98;
       letter-spacing: -0.03em;
@@ -401,6 +506,140 @@
       font-size: 15px;
     }
 
+    .sector-section {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: center;
+      box-shadow: 0 12px 28px rgba(11, 18, 32, 0.06);
+      margin-bottom: 22px;
+    }
+    .sector-section:last-child { margin-bottom: 0; }
+    .sector-media {
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(31,95,191,0.14), rgba(15,118,110,0.12));
+      border: 1px solid rgba(31,95,191,0.16);
+      padding: 26px;
+      min-height: 220px;
+      display: grid;
+      align-content: center;
+      gap: 12px;
+    }
+    .sector-media svg {
+      width: 44px;
+      height: 44px;
+      stroke: var(--primary-dark);
+      fill: none;
+      stroke-width: 2;
+    }
+    .sector-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .sector-badge {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: #f2f6fb;
+      border: 1px solid #dbe4f0;
+      font-size: 13px;
+      color: #1f2a44;
+    }
+    .sector-actions {
+      margin-top: 18px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .sector-actions a {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--primary-dark);
+    }
+
+    .engagement-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .engagement-card {
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: 0 10px 24px rgba(11,18,32,0.05);
+    }
+    .engagement-card h3 {
+      font-size: 20px;
+      margin-bottom: 8px;
+      color: var(--navy);
+    }
+    .engagement-card p { color: var(--muted); font-size: 15px; }
+    .engagement-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .engagement-card li {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .engagement-card li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--accent);
+      margin-top: 6px;
+    }
+
+    .assurance-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+    .assurance-card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      padding: 26px;
+      box-shadow: 0 10px 24px rgba(11,18,32,0.05);
+    }
+    .assurance-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--navy);
+    }
+    .assurance-card ul {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+    .assurance-card li {
+      display: grid;
+      grid-template-columns: 16px 1fr;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .assurance-card li::before {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(31,95,191,0.18);
+      margin-top: 6px;
+    }
+
     .process-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -432,6 +671,13 @@
       color: var(--primary-dark);
       font-weight: 700;
       margin-bottom: 16px;
+    }
+    .step svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
     }
     .process-card h3 {
       font-size: 20px;
@@ -466,7 +712,7 @@
       border-bottom: 1px solid var(--line);
     }
     .why-item:last-child { border-bottom: 0; padding-bottom: 0; }
-    .why-num {
+    .why-icon {
       width: 44px;
       height: 44px;
       border-radius: 50%;
@@ -475,8 +721,13 @@
       justify-content: center;
       background: var(--navy);
       color: #fff;
-      font-weight: 700;
-      font-size: 14px;
+    }
+    .why-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
     }
     .why-item h4 {
       font-size: 18px;
@@ -581,7 +832,7 @@
       align-items: start;
     }
     .contact-shell h2 {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: var(--headline);
       font-size: clamp(42px, 5vw, 60px);
       line-height: 0.98;
       color: var(--navy);
@@ -673,6 +924,16 @@
       transform: translateY(0);
     }
 
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      .btn { transition: none; }
+    }
+
     @media (max-width: 1080px) {
       .hero-grid,
       .why-grid,
@@ -680,11 +941,16 @@
       .contact-shell {
         grid-template-columns: 1fr;
       }
-      .cards-3 {
+      .cards-3,
+      .engagement-grid,
+      .assurance-grid {
         grid-template-columns: repeat(2, 1fr);
       }
       .process-grid {
         grid-template-columns: repeat(2, 1fr);
+      }
+      .sector-section {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -703,6 +969,15 @@
         flex-wrap: wrap;
         padding-bottom: 6px;
       }
+      .dropdown-panel {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        border: 1px solid var(--line);
+        margin-top: 8px;
+      }
       .hero {
         padding-top: 170px;
         padding-bottom: 70px;
@@ -711,6 +986,8 @@
         font-size: clamp(44px, 13vw, 66px);
       }
       .cards-3,
+      .engagement-grid,
+      .assurance-grid,
       .process-grid,
       .metrics,
       .stat-grid {
@@ -780,7 +1057,16 @@
 
       <ul class="nav-links">
         <li><a href="#services">Services</a></li>
+        <li class="nav-dropdown">
+          <a href="#sectors">Sectors</a>
+          <div class="dropdown-panel">
+            <a href="sectors/industrial-manufacturing.html">Industrial software</a>
+            <a href="sectors/fintech.html">Fintech</a>
+            <a href="sectors/public-sector.html">Public sector programs</a>
+          </div>
+        </li>
         <li><a href="#process">Process</a></li>
+        <li><a href="#engagement">Engagement</a></li>
         <li><a href="#why">Why Pivot</a></li>
         <li><a href="#tech">Stack</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -797,61 +1083,75 @@
       <div class="container">
         <div class="hero-grid">
           <div class="reveal">
-            <div class="eyebrow">Full-cycle software delivery</div>
-            <h1>Your <span>software partner</span>, from idea to long-term growth.</h1>
+            <div class="eyebrow">Enterprise-grade software delivery</div>
+
+            <h1>
+            <span>Strategic software delivery</span>
+            for business-critical products.
+            </h1>
+
             <p class="lead">
-              Pivot Softwares acts as your complete software team — strategy, architecture, development,
-              deployment, and support. You focus on the business. We handle the technology with clarity,
-              structure, and professional execution.
+            Pivot Softwares designs, builds, and modernizes reliable software systems in the
+            Microsoft ecosystem. We own architecture, delivery, and long-term support so
+            your teams can move fast with confidence.
             </p>
+            <div class="hero-meta">Architecture, delivery, and support under one accountable partner.</div>
 
             <div class="hero-actions">
-              <a href="#contact" class="btn btn-primary">Start a Project</a>
+              <a href="#contact" class="btn btn-primary">Book a Discovery Call</a>
               <a href="#services" class="btn btn-secondary">Explore Services</a>
             </div>
 
             <div class="hero-points">
-              <span>Web Development</span>
-              <span>Mobile Applications</span>
-              <span>Desktop Software</span>
-              <span>Architecture & DevOps</span>
+              <span>Product Modernization</span>
+              <span>Cloud & DevOps</span>
+              <span>Data & Integrations</span>
+              <span>Secure Delivery</span>
             </div>
           </div>
 
           <aside class="hero-card reveal">
             <div class="hero-card-top">
               <div>
-                <div class="badge">Professional delivery model</div>
-                <h3>Built for companies that need reliability, not complexity.</h3>
-                <p>One partner. One accountable team. A clean process from discovery to production.</p>
+                <div class="badge">Delivery blueprint</div>
+                <h3>Predictable outcomes with clear accountability.</h3>
+                <p>One partner, one delivery system, and full transparency from discovery to production.</p>
               </div>
             </div>
 
             <div class="metrics">
               <div class="metric">
                 <strong>End-to-end</strong>
-                <span>From requirements to deployment and maintenance</span>
+                <span>Discovery, delivery, and long-term support</span>
               </div>
               <div class="metric">
                 <strong>Proven stack</strong>
-                <span>Battle-tested technologies chosen for your use case</span>
+                <span>Microsoft technologies chosen for your use case</span>
               </div>
               <div class="metric">
                 <strong>Single team</strong>
-                <span>No fragmented handoffs across multiple vendors</span>
+                <span>Continuity from first scope to production</span>
               </div>
               <div class="metric">
                 <strong>Long-term</strong>
                 <span>Support, optimization, and continuous improvement</span>
               </div>
             </div>
+
+            <div class="timeline">
+              <div class="timeline-item"><span></span>Discovery and product strategy alignment</div>
+              <div class="timeline-item"><span></span>Architecture, build, and managed delivery</div>
+              <div class="timeline-item"><span></span>Launch, stabilize, and improve over time</div>
+            </div>
           </aside>
         </div>
 
         <div class="trust-bar reveal">
           <div class="trust-wrap">
-            <span><strong>Delivery model:</strong> Discovery, architecture, development, launch, support</span>
-            <span><strong>Focus:</strong> Practical business software with strong technical foundations</span>
+            <span class="trust-chip"><strong>Delivery model:</strong> Discovery, architecture, build, launch, support</span>
+            <span class="trust-chip"><strong>Focus:</strong> Business software with strong technical foundations</span>
+            <span class="trust-chip"><strong>Engagement:</strong> Dedicated team or project-based delivery</span>
+            <span class="trust-chip"><strong>Sectors:</strong> Industrial, fintech, public sector</span>
           </div>
         </div>
       </div>
@@ -862,11 +1162,12 @@
         <div class="section-head reveal">
           <div class="section-label">What we deliver</div>
           <h2 class="section-title">Professional software services with full ownership.</h2>
-          <p class="section-copy">
-            We design and deliver digital products that are modern, scalable, and maintainable.
-            Every engagement is structured to reduce risk, accelerate delivery, and keep quality high.
-          </p>
-        </div>
+            <p class="section-copy">
+              We design and deliver digital products that are modern, scalable, and maintainable.
+              Experience spans industrial software, fintech, and public-sector
+              programs, with strengths in modernization, cloud delivery, data integration, and secure operations.
+            </p>
+          </div>
 
         <div class="cards-3">
           <article class="card reveal">
@@ -874,7 +1175,7 @@
               <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 20h8"/></svg>
             </div>
             <h3>Web Development</h3>
-            <p>Modern, fast, and scalable web applications built with the latest Microsoft web technologies, from business websites to enterprise platforms.</p>
+            <p>Modern, secure, and scalable web applications for customer platforms, internal tools, and mission-critical portals.</p>
           </article>
 
           <article class="card reveal">
@@ -882,7 +1183,7 @@
               <svg viewBox="0 0 24 24"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18.5h2"/></svg>
             </div>
             <h3>Mobile Applications</h3>
-            <p>Cross-platform mobile apps for iOS and Android using .NET MAUI and Xamarin, with one codebase and a polished user experience.</p>
+            <p>Cross-platform mobile apps for iOS and Android using .NET MAUI, with one codebase and a polished user experience.</p>
           </article>
 
           <article class="card reveal">
@@ -890,7 +1191,7 @@
               <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="12" rx="2"/><path d="M8 20h8"/><path d="M12 16v4"/></svg>
             </div>
             <h3>Desktop Applications</h3>
-            <p>Reliable Windows desktop software using WPF, WinForms, VC++, MFC, and QT built for performance, stability, and seamless business integration.</p>
+            <p>Reliable Windows desktop software using WPF, WinForms, C++/MFC, and Qt built for performance and stability.</p>
           </article>
 
           <article class="card reveal">
@@ -898,7 +1199,7 @@
               <svg viewBox="0 0 24 24"><path d="M4 18L12 6l8 12"/><path d="M9 14h6"/></svg>
             </div>
             <h3>Software Architecture</h3>
-            <p>Robust architecture tailored to your context, whether that means a clean monolith, modular application, or service-oriented platform.</p>
+            <p>Solution architecture tailored to your context, from modular monoliths to service-oriented platforms and integrations.</p>
           </article>
 
           <article class="card reveal">
@@ -906,7 +1207,7 @@
               <svg viewBox="0 0 24 24"><path d="M12 3v6"/><path d="M12 15v6"/><path d="M5.6 7.2l4.2 2.4"/><path d="M14.2 14.4l4.2 2.4"/><path d="M18.4 7.2l-4.2 2.4"/><path d="M9.8 14.4l-4.2 2.4"/></svg>
             </div>
             <h3>Deployment & DevOps</h3>
-            <p>CI/CD, cloud deployment, automated delivery pipelines, and infrastructure practices that keep releases stable and predictable.</p>
+            <p>CI/CD, Azure cloud deployment, infrastructure automation, and operational practices that keep releases stable and predictable.</p>
           </article>
 
           <article class="card reveal">
@@ -914,9 +1215,92 @@
               <svg viewBox="0 0 24 24"><path d="M12 22a9 9 0 1 0-9-9"/><path d="M3 13h6v6"/></svg>
             </div>
             <h3>Maintenance & Support</h3>
-            <p>Post-launch ownership covering updates, fixes, monitoring, and continuous improvement so your software keeps delivering value.</p>
+            <p>Post-launch ownership covering updates, monitoring, and continuous improvement so your software keeps delivering value.</p>
+          </article>
+
+          <article class="card reveal">
+            <div class="icon">
+              <svg viewBox="0 0 24 24"><path d="M4 4h16v6H4z"/><path d="M4 14h10v6H4z"/><path d="M18 14h2v6h-2z"/></svg>
+            </div>
+            <h3>Legacy Modernization</h3>
+            <p>Stabilize legacy applications, reduce technical debt, and migrate to modern platforms without interrupting business operations.</p>
           </article>
         </div>
+      </div>
+    </section>
+
+    <section class="section-soft" id="sectors">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">Sectors served</div>
+          <h2 class="section-title">Delivery experience across regulated and industrial environments.</h2>
+          <p class="section-copy">
+            We support organizations where reliability, traceability, and operational continuity are critical.
+            Sector experience helps us anticipate risk, compliance needs, and integration constraints.
+          </p>
+        </div>
+
+        <article class="sector-section reveal">
+          <div>
+            <h3>Industrial software</h3>
+            <p>Industrial software delivery for connected machines, production systems, and operational workflows. We build platforms that manage machine control, data exchange, and reliability across shop-floor environments.</p>
+            <div class="sector-badges">
+              <span class="sector-badge">Machine control</span>
+              <span class="sector-badge">Device integration</span>
+              <span class="sector-badge">Operational reliability</span>
+            </div>
+            <div class="sector-actions">
+              <a href="sectors/industrial-manufacturing.html">Explore industrial delivery</a>
+            </div>
+          </div>
+          <div class="sector-media">
+            <svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M6 21V9l6-3 6 3v12"/><path d="M9 21v-6h6v6"/></svg>
+            <strong>Operational reliability</strong>
+            <span>Systems that keep production running without disruption.</span>
+          </div>
+        </article>
+
+        
+
+        <article class="sector-section reveal">
+          <div>
+            <h3>Fintech</h3>
+            <p>Secure transaction workflows, audit‑ready data pipelines, and resilient platforms for regulated financial products. We prioritize data integrity, access control, and observability so risk and compliance teams can trust the system.</p>
+            <div class="sector-badges">
+              <span class="sector-badge">Secure data flows</span>
+              <span class="sector-badge">Audit readiness</span>
+              <span class="sector-badge">Risk controls</span>
+            </div>
+            <div class="sector-actions">
+              <a href="sectors/fintech.html">Explore fintech delivery</a>
+            </div>
+          </div>
+          <div class="sector-media">
+            <svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M4 10h16"/><path d="M8 14h4"/></svg>
+            <strong>Trust and compliance</strong>
+            <span>Systems designed for regulated, high-stakes environments.</span>
+          </div>
+        </article>
+
+        <article class="sector-section reveal">
+          <div>
+            <h3>Public sector programs</h3>
+            <p>Citizen‑facing services, internal platforms, and data systems aligned with governance and accessibility standards. We focus on reliability, clear documentation, and long‑term maintainability across multi‑stakeholder programs.</p>
+            <div class="sector-badges">
+              <span class="sector-badge">Citizen services</span>
+              <span class="sector-badge">Data platforms</span>
+              <span class="sector-badge">Governance alignment</span>
+            </div>
+            <div class="sector-actions">
+              <a href="sectors/public-sector.html">Explore public sector delivery</a>
+            </div>
+          </div>
+          <div class="sector-media">
+            <svg viewBox="0 0 24 24"><path d="M3 10l9-6 9 6"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+            <strong>Public impact</strong>
+            <span>Reliable services that serve citizens and internal teams.</span>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -926,34 +1310,87 @@
           <div class="section-label">How we work</div>
           <h2 class="section-title">A clear process that keeps projects professional and predictable.</h2>
           <p class="section-copy">
-            We do not disappear after development starts. Our team stays aligned with your business goals from discovery to launch,
-            with one consistent workflow and one accountable delivery partner.
+            We stay engaged from discovery through launch, keeping your goals in focus at every stage.
+            You work with one accountable delivery partner and a consistent workflow throughout.
           </p>
         </div>
 
         <div class="process-grid">
           <article class="process-card reveal">
-            <div class="step">01</div>
+            <div class="step">
+              <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-3.5-3.5"/></svg>
+            </div>
             <h3>Discovery</h3>
             <p>We clarify your goals, scope, priorities, and business constraints before any technical decisions are made.</p>
           </article>
 
           <article class="process-card reveal">
-            <div class="step">02</div>
+            <div class="step">
+              <svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="6" rx="2"/><rect x="4" y="14" width="16" height="6" rx="2"/></svg>
+            </div>
             <h3>Architecture</h3>
             <p>We define the right technical approach, structure, and stack to ensure maintainability, performance, and scalability.</p>
           </article>
 
           <article class="process-card reveal">
-            <div class="step">03</div>
+            <div class="step">
+              <svg viewBox="0 0 24 24"><path d="M8 8l-4 4 4 4"/><path d="M16 8l4 4-4 4"/><path d="M10 19l4-14"/></svg>
+            </div>
             <h3>Development</h3>
             <p>Your solution is built iteratively with professional delivery standards, regular progress visibility, and structured communication.</p>
           </article>
 
           <article class="process-card reveal">
-            <div class="step">04</div>
+            <div class="step">
+              <svg viewBox="0 0 24 24"><path d="M5 19h14"/><path d="M12 5v10"/><path d="M8 9l4-4 4 4"/></svg>
+            </div>
             <h3>Launch & Maintain</h3>
             <p>We deploy, stabilize, support, and improve the product after launch so it remains reliable in real business conditions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="engagement">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">Engagement models</div>
+          <h2 class="section-title">Structured delivery aligned to your timeline and risk profile.</h2>
+          <p class="section-copy">
+            Choose the model that fits your product stage. Each option includes transparent reporting,
+            clear ownership, and measurable milestones.
+          </p>
+        </div>
+
+        <div class="engagement-grid">
+          <article class="engagement-card reveal">
+            <h3>Fixed-scope delivery</h3>
+            <p>Best for defined outcomes with a clear timeline and budget.</p>
+            <ul>
+              <li>Detailed discovery and requirements documentation</li>
+              <li>Milestone plan with clear acceptance criteria</li>
+              <li>Predictable release and launch readiness</li>
+            </ul>
+          </article>
+
+          <article class="engagement-card reveal">
+            <h3>Dedicated product team</h3>
+            <p>Ideal for ongoing roadmaps and continuous product evolution.</p>
+            <ul>
+              <li>Cross-functional team embedded with your stakeholders</li>
+              <li>Flexible scope with sprint-based delivery</li>
+              <li>Continuous QA, DevOps, and roadmap alignment</li>
+            </ul>
+          </article>
+
+          <article class="engagement-card reveal">
+            <h3>Modernization and rescue</h3>
+            <p>For legacy systems that need stabilization, modernization, or recovery.</p>
+            <ul>
+              <li>Architecture assessment and risk mitigation plan</li>
+              <li>Incremental modernization without business disruption</li>
+              <li>Performance, security, and reliability improvements</li>
+            </ul>
           </article>
         </div>
       </div>
@@ -968,25 +1405,31 @@
 
             <div class="why-list">
               <div class="why-item">
-                <div class="why-num">01</div>
+                <div class="why-icon">
+                  <svg viewBox="0 0 24 24"><path d="M6 12l4 4 8-8"/></svg>
+                </div>
                 <div>
-                  <h4>No internal IT department required</h4>
-                  <p>We become your dedicated software partner, reducing the overhead of recruiting, onboarding, and managing a full in-house team.</p>
+                  <h4>Reduced internal overhead</h4>
+                  <p>We operate as your dedicated software partner, minimizing the burden of recruiting, onboarding, and managing a full in-house team.</p>
                 </div>
               </div>
 
               <div class="why-item">
-                <div class="why-num">02</div>
+                <div class="why-icon">
+                  <svg viewBox="0 0 24 24"><path d="M12 3l7 4v6c0 5-3.5 7.5-7 9-3.5-1.5-7-4-7-9V7l7-4z"/></svg>
+                </div>
                 <div>
-                  <h4>Dedicated team with real accountability</h4>
-                  <p>Your project is not treated as a side assignment. It is handled with ownership, consistency, and a professional delivery structure.</p>
+                  <h4>Dedicated team with clear accountability</h4>
+                  <p>Your product is handled with ownership, consistency, and a professional delivery structure that keeps priorities aligned.</p>
                 </div>
               </div>
 
               <div class="why-item">
-                <div class="why-num">03</div>
+                <div class="why-icon">
+                  <svg viewBox="0 0 24 24"><path d="M7 12h10"/><path d="M12 7v10"/></svg>
+                </div>
                 <div>
-                  <h4>One partner from start to finish</h4>
+                  <h4>One partner from strategy to support</h4>
                   <p>From first requirement to production support, you work with one team that understands the full context of your product.</p>
                 </div>
               </div>
@@ -995,28 +1438,70 @@
 
           <aside class="stats-panel reveal">
             <div>
-              <h3>Built for companies that need a reliable delivery partne</h3>
+              <h3>Built for companies that need a reliable delivery partner</h3>
             </div>
 
             <div class="stat-grid">
               <div class="stat-box">
-                <strong>100%</strong>
-                <span>Dedicated focus on delivery quality</span>
+                <strong>Quality-first</strong>
+                <span>Delivery standards embedded end to end</span>
               </div>
               <div class="stat-box">
-                <strong>1</strong>
-                <span>Single accountable partner</span>
+                <strong>Single partner</strong>
+                <span>Clear accountability and ownership</span>
               </div>
               <div class="stat-box">
-                <strong>Full</strong>
-                <span>Ownership across the entire lifecycle</span>
+                <strong>Full lifecycle</strong>
+                <span>From discovery through long-term support</span>
               </div>
               <div class="stat-box">
-                <strong>.NET</strong>
-                <span>Core technical specialization</span>
+                <strong>Microsoft stack</strong>
+                <span>Deep engineering focus and delivery depth</span>
               </div>
             </div>
           </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="assurance">
+      <div class="container">
+        <div class="section-head reveal">
+          <div class="section-label">Quality and governance</div>
+          <h2 class="section-title">Professional delivery standards built into every engagement.</h2>
+          <p class="section-copy">
+            We keep engineering quality high and risk low with clear governance, measurable checkpoints,
+            and documentation that your teams can trust.
+          </p>
+        </div>
+
+        <div class="assurance-grid">
+          <article class="assurance-card reveal">
+            <h3>Delivery governance</h3>
+            <ul>
+              <li>Roadmap, milestones, and delivery reporting</li>
+              <li>Stakeholder updates with clear next steps</li>
+              <li>Risk tracking and mitigation planning</li>
+            </ul>
+          </article>
+
+          <article class="assurance-card reveal">
+            <h3>Quality engineering</h3>
+            <ul>
+              <li>Automated testing and code review practices</li>
+              <li>Performance and reliability benchmarks</li>
+              <li>Production readiness and release checklists</li>
+            </ul>
+          </article>
+
+          <article class="assurance-card reveal">
+            <h3>Security mindset</h3>
+            <ul>
+              <li>Secure coding practices aligned to OWASP</li>
+              <li>Identity, access, and data protection reviews</li>
+              <li>Monitoring, alerting, and incident response planning</li>
+            </ul>
+          </article>
         </div>
       </div>
     </section>
@@ -1025,37 +1510,28 @@
       <div class="container">
         <div class="tech-wrap">
           <div class="section-head reveal">
-            <div class="section-label">Our stack</div>
-            <h2 class="section-title">Microsoft ecosystem specialists.</h2>
+            <div class="section-label">Technology focus</div>
+            <h2 class="section-title">Microsoft-first delivery with enterprise-ready architecture.</h2>
             <p class="section-copy">
-              We build with technologies that support long-term maintainability, strong integration capabilities,
-              and dependable business performance.
+              We focus on outcomes, not tool catalogs. The approach prioritizes reliability, integration depth,
+              and operational clarity across every release.
             </p>
           </div>
 
           <div class="stack-panel reveal">
-            <h3>Core technologies</h3>
-            <p>Selected for stability, scalability, and strong alignment with modern business software delivery.</p>
+            <h3>Delivery capabilities</h3>
+            <p>We use Microsoft platforms to deliver systems that are stable in production and easy to operate.</p>
             <div class="tags">
-              <span class="tag">.NET / C#</span>
-              <span class="tag">ASP.NET Core</span>
-              <span class="tag">Azure</span>
-              <span class="tag">.NET MAUI</span>
-              <span class="tag">WPF</span>
-              <span class="tag">WinForms</span>
-              <span class="tag">VC++</span>
-              <span class="tag">MFC</span>
-              <span class="tag">QT</span>
-              <span class="tag">Blazor</span>
-              <span class="tag">SQL Server</span>
-              <span class="tag">Entity Framework</span>
-              <span class="tag">Azure DevOps</span>
-              <span class="tag">SignalR</span>
-              <span class="tag">Xamarin</span>
-              <span class="tag">Power BI</span>
-              <span class="tag">REST APIs</span>
-              <span class="tag">Docker</span>
-              <span class="tag">TypeScript</span>
+              <span class="tag featured">Modernization and migration</span>
+              <span class="tag">Cloud-native architecture</span>
+              <span class="tag">Data platforms and reporting</span>
+              <span class="tag">Secure identity and access</span>
+              <span class="tag">API and systems integration</span>
+              <span class="tag">DevOps automation</span>
+              <span class="tag">Observability and monitoring</span>
+              <span class="tag">Performance and scale</span>
+              <span class="tag">Long-term maintainability</span>
+              <span class="tag">Compliance-aware delivery</span>
             </div>
           </div>
         </div>
@@ -1067,10 +1543,10 @@
         <div class="contact-shell reveal">
           <div>
             <div class="section-label">Get in touch</div>
-            <h2>Ready to move your project forward with a more professional software partner?</h2>
+            <h2>Ready to move your project forward with a professional delivery partner?</h2>
             <p>
               Tell us about your goals, your current challenges, or the product you want to build.
-              We can help structure the right solution and take ownership from there.
+              We will help structure the right solution and take ownership from there.
             </p>
             <a class="contact-email" href="mailto:contact@pivotsoftwares.com">contact@pivotsoftwares.com</a>
           </div>
@@ -1078,7 +1554,11 @@
           <div class="contact-panel">
             <div class="contact-detail">
               <span class="label">Availability</span>
-              <span class="value">Open to new projects</span>
+              <span class="value">Accepting new engagements</span>
+            </div>
+            <div class="contact-detail">
+              <span class="label">Engagements</span>
+              <span class="value">Project delivery or dedicated team models</span>
             </div>
             <div class="contact-detail">
               <span class="label">Specialization</span>
@@ -1131,7 +1611,7 @@
         <path transform="translate(0,0)" fill="rgb(21,45,71)" d="M 1555.06 1276.33 L 1569.69 1276.25 L 1569.27 1350.26 L 1554.91 1350.25 C 1556 1329.28 1555.01 1298.28 1555.06 1276.33 z"/>
         <path transform="translate(0,0)" fill="rgb(21,45,71)" d="M 1559.01 1247.59 C 1563.68 1245.64 1569.04 1247.79 1571.07 1252.42 C 1573.1 1257.05 1571.04 1262.46 1566.44 1264.56 C 1563.4 1265.96 1559.84 1265.6 1557.14 1263.63 C 1554.43 1261.66 1552.99 1258.39 1553.38 1255.06 C 1553.77 1251.74 1555.92 1248.88 1559.01 1247.59 z"/>
       </svg>       
-        <div class="footer-copy">© 2026 Pivot Softwares. Professional IT consulting and software delivery.</div>
+        <div class="footer-copy">(c) 2026 Pivot Softwares. Professional IT consulting and software delivery.</div>
       </div>
     </div>
   </footer>
@@ -1159,3 +1639,6 @@
   </script>
 </body>
 </html>
+
+
+
