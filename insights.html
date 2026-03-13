@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fintech Software Delivery | Pivot Softwares</title>
-  <meta name="description" content="Fintech delivery focused on secure transaction workflows, reconciliation, and audit-ready platforms." />
-  <link rel="canonical" href="https://pivotsoftwares.com/sectors/fintech.html" />
-  <meta property="og:title" content="Fintech Software Delivery | Pivot Softwares" />
-  <meta property="og:description" content="Fintech platforms for transaction integrity, reconciliation, and operational control." />
+  <title>Insights | Pivot Softwares</title>
+  <meta name="description" content="Practical insights on industrial software, fintech operations, and public sector delivery." />
+  <link rel="canonical" href="https://pivotsoftwares.com/insights.html" />
+  <meta property="og:title" content="Insights | Pivot Softwares" />
+  <meta property="og:description" content="Practical insights on industrial software, fintech operations, and public sector delivery." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://pivotsoftwares.com/sectors/fintech.html" />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80" />
+  <meta property="og:url" content="https://pivotsoftwares.com/insights.html" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -208,13 +208,6 @@
       box-shadow: 0 16px 32px rgba(31,95,191,0.2);
     }
     .btn-primary:hover { background: var(--primary-dark); transform: translateY(-1px); }
-    .btn-secondary {
-      background: #fff;
-      color: var(--text);
-      border-color: var(--line-strong);
-      padding: 14px 22px;
-    }
-    .btn-secondary:hover { border-color: var(--primary); color: var(--primary-dark); }
 
     .hero { padding: 140px 0 60px; }
     .hero-grid {
@@ -247,8 +240,6 @@
     }
 
     section { padding: 56px 0; }
-    .section-soft { background: var(--bg-soft); }
-    .section-head { margin-bottom: 28px; }
     .section-label {
       font-size: 12px;
       text-transform: uppercase;
@@ -263,125 +254,70 @@
       margin-bottom: 12px;
       color: var(--navy);
     }
-    .section-copy { color: var(--muted); font-size: 16px; }
 
-    .two-col {
+    .insight-list {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 22px;
+      gap: 28px;
     }
-    .section-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: 0 10px 26px rgba(11, 18, 32, 0.06);
-    }
-    .section-card ul { list-style: none; display: grid; gap: 10px; }
-    .section-card li {
-      color: var(--muted);
-      font-size: 15px;
-      padding-left: 18px;
-      position: relative;
-    }
-    .section-card li::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      position: absolute;
-      left: 0;
-      top: 9px;
-      background: var(--accent);
-    }
-
-    .case-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      align-items: stretch;
-    }
-    .case-card {
+    .insight-card {
       background: #fff;
       border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 28px;
-      box-shadow: 0 10px 24px rgba(11, 18, 32, 0.06);
-    }
-    .case-card ul { list-style: none; display: grid; gap: 10px; margin-top: 14px; }
-    .case-card li {
-      color: var(--muted);
-      font-size: 15px;
-      padding-left: 18px;
-      position: relative;
-    }
-    .case-card li::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      position: absolute;
-      left: 0;
-      top: 9px;
-      background: var(--primary);
-    }
-    .case-note {
-      margin-top: 16px;
-      padding: 12px 14px;
-      border-radius: 14px;
-      background: #f6f8fc;
-      border: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .case-media {
       border-radius: var(--radius-xl);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-    }
-    .case-media img {
-      width: 100%;
-      height: 100%;
-      min-height: 260px;
-      object-fit: cover;
-    }
-
-    .focus-grid {
+      padding: 28px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-    .focus-card {
-      background: #fff;
-      border: 1px solid var(--line);
-      border-radius: var(--radius-lg);
-      padding: 24px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
       box-shadow: 0 10px 24px rgba(11, 18, 32, 0.05);
     }
-    .focus-card h3 { font-size: 18px; margin-bottom: 8px; color: var(--navy); }
-    .focus-card p { color: var(--muted); font-size: 14px; }
-
-    .cta-band {
-      background: var(--navy);
-      color: #fff;
-      border-radius: var(--radius-xl);
-      padding: 34px;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      box-shadow: var(--shadow);
+    .insight-card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 18px;
     }
-    .cta-band h3 { font-size: 24px; margin-bottom: 6px; }
-    .cta-band p { color: rgba(255,255,255,0.75); max-width: 560px; }
+    .insight-meta {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--primary-dark);
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .insight-card h2 {
+      font-size: 26px;
+      color: var(--navy);
+      margin-bottom: 12px;
+    }
+    .insight-card p {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 12px;
+    }
+    .insight-card ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+    .insight-card li {
+      color: var(--muted);
+      font-size: 14px;
+      position: relative;
+      padding-left: 18px;
+    }
+    .insight-card li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      position: absolute;
+      left: 0;
+      top: 9px;
+    }
 
     @media (max-width: 980px) {
       .hero-grid,
-      .two-col,
-      .case-grid,
-      .focus-grid {
+      .insight-card {
         grid-template-columns: 1fr;
       }
       .container { width: min(var(--container), calc(100% - 32px)); }
@@ -431,8 +367,8 @@
 <body>
   <header class="topbar" id="navbar">
     <div class="container nav">
-      <a class="brand" href="../index.html">
-        <img src="../assets/logo.svg" alt="Pivot Softwares logo" />
+      <a class="brand" href="index.html">
+        <img src="assets/logo.svg" alt="Pivot Softwares logo" />
         <div class="brand-text">
           <span class="brand-name">Pivot Softwares</span>
           <span class="brand-tag">IT Consulting</span>
@@ -447,26 +383,26 @@
 
       <div class="nav-menu" id="navMenu">
         <ul class="nav-links">
-          <li><a href="../index.html#services">Services</a></li>
+          <li><a href="index.html#services">Services</a></li>
           <li class="nav-dropdown">
-            <a href="../index.html#sectors">Sectors</a>
+            <a href="index.html#sectors">Sectors</a>
             <div class="dropdown-panel">
-              <a href="industrial-manufacturing.html">Industrial software</a>
-              <a href="fintech.html">Fintech</a>
-              <a href="public-sector.html">Public sector programs</a>
+              <a href="sectors/industrial-manufacturing.html">Industrial software</a>
+              <a href="sectors/fintech.html">Fintech</a>
+              <a href="sectors/public-sector.html">Public sector programs</a>
             </div>
           </li>
-          <li><a href="../index.html#process">Process</a></li>
-          <li><a href="../index.html#engagement">Engagement</a></li>
-          <li><a href="../index.html#why">Why Pivot</a></li>
-          <li><a href="../about.html">About</a></li>
-          <li><a href="../index.html#tech">Stack</a></li>
-          <li><a href="../insights.html">Insights</a></li>
-          <li><a href="../index.html#contact">Contact</a></li>
+          <li><a href="index.html#process">Process</a></li>
+          <li><a href="index.html#engagement">Engagement</a></li>
+          <li><a href="index.html#why">Why Pivot</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="index.html#tech">Stack</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
         </ul>
 
         <div class="nav-actions">
-          <a href="../index.html#contact" class="btn btn-primary">Start a Project</a>
+          <a href="index.html#contact" class="btn btn-primary">Start a Project</a>
         </div>
       </div>
     </div>
@@ -476,97 +412,76 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <div class="eyebrow">Fintech</div>
-          <h1>Fintech platforms built for transaction integrity and operational control.</h1>
+          <div class="eyebrow">Insights</div>
+          <h1>Practical guidance from delivery work.</h1>
           <p>
-            We deliver fintech systems for approvals, reconciliation, and audit evidence. The focus is on clean data flows, secure access, and operational visibility when the stakes are high.
+            Focused perspectives on the operational systems we build and the challenges teams face in industrial, fintech, and public sector environments.
           </p>
         </div>
         <div class="hero-image">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80" alt="Fintech operations dashboard" />
+          <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80" alt="Team planning a delivery roadmap" />
         </div>
       </div>
     </section>
 
     <section>
-      <div class="container two-col">
-        <div class="section-card">
-          <h2 class="section-title">What we build</h2>
-          <ul>
-            <li>Digital onboarding and account workflows</li>
-            <li>Payments, transfers, and wallet operations</li>
-            <li>Reconciliation and settlement tooling</li>
-            <li>Risk rules and exception management</li>
-            <li>Operational dashboards and reporting</li>
-          </ul>
-        </div>
-        <div class="section-card">
-          <h2 class="section-title">Operational priorities</h2>
-          <ul>
-            <li>Audit trails and data lineage</li>
-            <li>Segregation of duties and access control</li>
-            <li>Resilient services with clear fallback paths</li>
-            <li>Monitoring, alerting, and incident readiness</li>
-            <li>Secure handling of customer data</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-soft">
-      <div class="container case-grid">
-        <div class="case-card">
-          <div class="section-label">Case snapshot</div>
-          <h2 class="section-title">Multi-rail reconciliation with clear audit evidence.</h2>
-          <p>
-            A fintech platform needed reconciliation across multiple payment rails with rapid exception handling and audit-ready reporting.
-          </p>
-          <ul>
-            <li>Automated matching and exception queues</li>
-            <li>Audit-ready transaction histories</li>
-            <li>Dashboards for operations and compliance</li>
-          </ul>
-          <div class="case-note">Outcome: fewer manual steps and clearer audit evidence for every settlement cycle.</div>
-        </div>
-        <div class="case-media">
-          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80" alt="Fintech operations and reconciliation" />
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-head">
-          <div class="section-label">Delivery focus</div>
-          <h2 class="section-title">What fintech teams rely on us for.</h2>
-          <p class="section-copy">We prioritize operational clarity, auditability, and stability across every release.</p>
-        </div>
-        <div class="focus-grid">
-          <div class="focus-card">
-            <h3>Common integrations</h3>
-            <p>Payment processors, banking cores, identity services, KYC and AML tooling, and data warehouses.</p>
-          </div>
-          <div class="focus-card">
-            <h3>Compliance delivery</h3>
-            <p>Controls for approvals, traceability, and secure access that meet audit expectations.</p>
-          </div>
-          <div class="focus-card">
-            <h3>Operational outcomes</h3>
-            <p>Faster close cycles, fewer exceptions, and clear visibility into transaction flows.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="cta-band">
+      <div class="container insight-list">
+        <article class="insight-card" id="industrial">
           <div>
-            <h3>Need fintech delivery that your operations team can trust?</h3>
-            <p>Tell us about your transaction workflows, reconciliation needs, and compliance requirements.</p>
+            <div class="insight-meta">Industrial software</div>
+            <h2>Designing machine integration that operators can trust.</h2>
+            <p>
+              Industrial platforms fail when drivers behave inconsistently or when operators do not have a clear view of machine status. The systems that endure separate control logic from presentation, define stable device states, and monitor exceptions in real time.
+            </p>
+            <p>
+              A reliable integration layer includes clear device contracts, predictable error handling, and tooling that helps operators understand what to do next without escalating every issue to engineering.
+            </p>
+            <ul>
+              <li>Separate device drivers from operator workflows</li>
+              <li>Design state machines that survive real conditions</li>
+              <li>Make monitoring and diagnostics available to operations</li>
+            </ul>
           </div>
-          <a href="../index.html#contact" class="btn btn-primary">Start a project</a>
-        </div>
+          <img src="https://images.pexels.com/photos/7097290/pexels-photo-7097290.jpeg?cs=srgb&dl=pexels-optlasers-7097290.jpg&fm=jpg" alt="Industrial equipment in operation" />
+        </article>
+
+        <article class="insight-card" id="fintech">
+          <div>
+            <div class="insight-meta">Fintech</div>
+            <h2>Keeping transaction flows audit-ready without slowing operations.</h2>
+            <p>
+              Fintech teams need approvals, reconciliation, and exception handling to be dependable without adding friction to everyday operations. The strongest platforms treat auditability as a product requirement, not a reporting afterthought.
+            </p>
+            <p>
+              Clear lineage for every transaction, well-defined approval steps, and consistent data models are what allow compliance and operations teams to move quickly with confidence.
+            </p>
+            <ul>
+              <li>Build reconciliation into the core flow, not a separate process</li>
+              <li>Capture lineage and approvals at every handoff</li>
+              <li>Expose clear exception queues for operations teams</li>
+            </ul>
+          </div>
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1400&q=80" alt="Fintech operations and reporting" />
+        </article>
+
+        <article class="insight-card" id="public-sector">
+          <div>
+            <div class="insight-meta">Public sector</div>
+            <h2>Delivering public services with governance built in.</h2>
+            <p>
+              Public platforms serve many stakeholders and must remain stable for years. A dependable service uses consistent workflows, accessible interfaces, and documentation that keeps decisions traceable.
+            </p>
+            <p>
+              The most successful programs define clear ownership across departments, align data standards early, and ensure that service status is visible to both citizens and internal teams.
+            </p>
+            <ul>
+              <li>Design workflows that map to real departmental approvals</li>
+              <li>Prioritize accessibility, clarity, and transparency</li>
+              <li>Keep audit trails and service status visible</li>
+            </ul>
+          </div>
+          <img src="https://images.pexels.com/photos/13138090/pexels-photo-13138090.jpeg?cs=srgb&dl=pexels-laura-paredis-1047081-13138090.jpg&fm=jpg" alt="City hall exterior" />
+        </article>
       </div>
     </section>
   </main>
@@ -599,7 +514,6 @@
   </script>
 </body>
 </html>
-
 
 
 

@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l \"D:\\\\Work\\\\Personal Project\\\\PivotSoftwarsWebsite/index.html\" \"D:\\\\Work\\\\Personal Project\\\\PivotSoftwarsWebsite/sectors\"/*.html)"
+    ]
+  }
+}
